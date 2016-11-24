@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Last opp bildene dine</title>
+</head>
+<body>
+
+    <form id="regBilde">
+        <input type="file" id="inpBilde"required/>
+        <input type="text" id="inpBildeTekst" required/>
+        <button type="submit">OK</button>
+    </form>
+
+    <div id="visBilder"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAHkR5qFcGkXcEYyMta3StuoGTeKjyc3IE",
+            authDomain: "itfredag-41da7.firebaseapp.com",
+            databaseURL: "https://itfredag-41da7.firebaseio.com",
+            storageBucket: "itfredag-41da7.appspot.com",
+            messagingSenderId: "18002249425"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        var regBilde = document.getElementById("regBilde");
+        var inpBilde = document.getElementById("inpBilde");
+        var inpBildeTekst = document.getElementById("inpBildeTekst");
+        var visBilder = document.getElementById("visBilder");
+
+        var database = firebase.database();
+        var storage = firebase.storage();
+
+        var mineBilder = database.ref("mineBilder"); //Tabell i databasen
+
+        var bildeURL;
+
+        inpBilde.onchange = function () {
+            var file = inpBilde.files[0];
+            var imageRef = storage.ref("/images/" + new Date() + "/");
+            imageRef.put(file).then(function(snapshot){
+                bildeURL = snapshot.downloadURL;
+                console.log(bildeURL);
+            });
+        };
+
+        regBilde.onsubmit = function(evt){
+            evt.preventDefault();
+            mineBilder.push({
+               bildetekst: inpBildeTekst.value,
+               url: bildeURL
+            });
+            inpBilde.value = "";
+            inpBildeTekst.value = "";
+        };
+        mineBilder.on("child_added", function (snap) {
+            var data = snap.val();
+            visBilder.innerHTML += `<img height="200" src="${data.url}">`;
+        });
+
+    </script>
+
+</body>
+</html>
