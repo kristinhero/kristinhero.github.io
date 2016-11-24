@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvasfirkanter</title>
+    <style>
+
+        #canvasLiten {
+            background-color: darkorchid;
+        }
+        #canvasStor {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvasLiten" width="400" height="400"></canvas>
+    <canvas id="canvasStor" width="400" height="400"></canvas>
+
+    <script>
+        var canvasLiten = document.getElementById("canvasLiten");
+        var canvasStor = document.getElementById("canvasStor");
+        var ctxLiten = canvasLiten.getContext("2d");
+        var ctxStor = canvasStor.getContext("2d");
+        var totalBredde = 100;
+        var totalHoyde = 100;
+
+        function tegnFirkant(x, y, bredde, hoyde) {
+            ctxLiten.fillRect(x, y, bredde, hoyde);
+            totalBredde += bredde;
+            totalHoyde += hoyde;
+        }
+        function tegnStorFirkant(){
+            ctxStor.fillRect(0, 0, totalBredde, totalHoyde);
+        }
+        tegnFirkant(10, 10, 20, 20);
+        tegnFirkant(50, 50, 30, 30);
+        tegnFirkant(100, 100, 40, 20);
+        tegnStorFirkant();
+    </script>
+
+</body>
+</html>

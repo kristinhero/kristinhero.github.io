@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stjerner</title>
+</head>
+<body>
+
+    <script>
+
+        var tallene = [2, 4, 6, 8, 8];
+        console.log(tallene);
+
+        var mineTall = new Set(); // Kan bare ha unike verdier
+        mineTall.add(2);
+        mineTall.add(4);
+        mineTall.add(6);
+        mineTall.add(8);
+        mineTall.add(8); // Vil ikke vises
+
+        mineTall.delete(6); // Kan fjerne bestemt verdi
+        mineTall.add(14);
+
+        // Sjekke om 9 er med i mineTall
+        console.log (mineTall.has(9));
+        console.log (mineTall.has(2));
+
+        console.log(mineTall);
+
+    </script>
+
+</body>
+</html>

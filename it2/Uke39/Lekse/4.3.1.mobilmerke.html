@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mobilmerker</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-size: cover;
+            background-position: center center;
+        }
+        #overskrift {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="overskrift"></h1>
+
+    <script>
+
+        var overskrift = document.getElementById("overskrift");
+        var mobil = prompt("Hvilket mobilmerke vil du vite mer om?");
+
+        switch(mobil){
+            case"Apple":
+            case"apple":
+                overskrift.innerHTML = "Apple er brukervennlig.";
+                document.body.style.backgroundImage = `url("apple_logo.png")`;
+                break;
+            case"Microsoft":
+            case"microsoft":
+                overskrift.innerHTML = "Microsoft har lang erfaring.";
+                overskrift.style.color = "black";
+                document.body.style.backgroundImage = `url("microsoft.jpg")`;
+                break;
+            case"Sony":
+            case"sony":
+                overskrift.innerHTML = "Sony er det egentlig ingen som bryr seg om";
+                document.body.style.backgroundImage = `url("sony.jpg")`;
+                break;
+            case"Samsung":
+            case"samsung":
+                overskrift.innerHTML = "Samsung er farlig!";
+                overskrift.style.color = "black";
+                document.body.style.backgroundImage = `url("samsung.jpg")`;
+                break;
+            default:
+                overskrift.innerHTML = "Beklager, merket er for ukjent";
+                overskrift.style.color = "black";
+        }
+
+    </script>
+
+</body>
+</html>

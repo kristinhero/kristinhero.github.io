@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+        }
+        #papir {
+            background-color: steelblue;
+        }
+        #papir circle {
+            fill: transparent;
+            stroke: white;
+            transform-origin: center center;
+            opacity: 0.3;
+            transition: 1s;
+        }
+        #papir circle:hover {
+            transform: scale(1.2);
+            fill: cyan;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<svg id="papir" width="500" height="300"></svg>
+
+<script>
+
+    var papir = document.getElementById("papir"); // henter SVG-elementet
+    var bredde = innerWidth; // definerer variabelen bredde som nettleserens bredde
+    var hoyde = innerHeight; // definerer variabelen hoyde som nettleserens høyde
+
+    papir.style.width = bredde + "px"; // setter svg-elementet til å dekke hele skjermen
+    papir.style.height = hoyde + "px";
+
+    function sirkel() { // oppretter en funksjon for å lage sirkler
+        var x = Math.random() * bredde; // definerer sirkelens x-posisjon
+        var y = Math.random() * hoyde; // definerer y-posisjon
+        var r = Math.random() * 100; // definerer radius
+        papir.innerHTML += `<circle cx="${x}" cy="${y}" r="${r}"></circle>`;
+        // oppretter sirkelen med variablene vi har definert
+    }
+    sirkel(); // Kjører funksjonen 2 ganger
+    sirkel();
+
+</script>
+
+</body>
+</html>

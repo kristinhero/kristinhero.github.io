@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Klikk på skjerm</title>
+    <style>
+
+        .prikk {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDc5NnbNKkRCxvRYvtzmDFLfmvH0ZmtSDQ",
+            authDomain: "dazzling-torch-8931.firebaseapp.com",
+            databaseURL: "https://dazzling-torch-8931.firebaseio.com",
+            storageBucket: "dazzling-torch-8931.appspot.com",
+            messagingSenderId: "456122159344"
+        };
+        firebase.initializeApp(config);
+
+        var refPrikker = firebase.database().ref('prikker');
+
+        document.onclick = function(evt) {
+            var xpos = evt.clientX;
+            var ypos = evt.clientY;
+
+            refPrikker.push({
+                x: xpos,
+                y: ypos
+            });
+        };
+        // refPrikker.remove();
+        refPrikker.on('child_added', function(snap){
+            var diameter = Math.random() * 40;
+            var data = snap.val();
+            var prikk = document.createElement("div");
+            prikk.className = "prikk";
+            document.body.appendChild(prikk);
+            prikk.style.left = data.x - 10 + "px";
+            prikk.style.top = data.y - 10 + "px";
+            prikk.style.width = diameter + "px";
+            prikk.style.height = diameter + "px";
+        });
+
+    </script>
+
+</body>
+</html>

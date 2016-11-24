@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Handleliste</title>
+</head>
+<body>
+
+    <ol id="visVarer"></ol>
+
+    <script>
+
+        var visVarer = document.getElementById("visVarer");
+        var matvarer = ["ost","brød","paprika","kaviar"];
+
+        for(var matvare of matvarer){
+            var div = document.createElement("div");
+            div.innerHTML = matvare;
+            document.body.appendChild(div);
+        }
+
+    </script>
+
+</body>
+</html>

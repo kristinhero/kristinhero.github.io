@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frukt og grønt</title>
+</head>
+<body>
+
+    <p id="moms"></p>
+
+    <form id="frmMobil">
+        <input id="inpDM" type="number" placeholder="Datamengde (MB)"/>
+        <input id="inpSamtaler" type="number" placeholder="Antall samtaler"/>
+        <input id="inpRingetid" type="number" placeholder="Ringetid (min)"/>
+        <input id="inpSMS" type="number" placeholder="Antall SMS"/>
+        <input id="inpMMS" type="number" placeholder="Antall MMS"/>
+        <button type="submit">Regn ut min månedspris</button>
+    </form>
+    
+    <p id="mobil"></p>
+
+    <script>
+        var antallFrukt = 3;
+        var antallGronnsaker = 2;
+        var antallVarer = antallFrukt + antallGronnsaker;
+        document.write("Antall varer er " + antallVarer);
+
+        var prisU = prompt("Hva er varens pris uten moms?");
+        prisU = Number(prisU);
+        var prisM = prisU * 1.25;
+        var moms = document.getElementById("moms");
+        moms.innerHTML = "Prisen på varen med moms er " + prisM.toFixed(2) + " kr";
+
+        var frmMobil = document.getElementById("frmMobil");
+        var inpDM = document.getElementById("inpDM");
+        var inpSamtaler = document.getElementById("inpSamtaler");
+        var inpRingetid = document.getElementById("inpRingetid");
+        var inpSMS = document.getElementById("inpSMS");
+        var inpMMS = document.getElementById("inpMMS");
+        var mobil = document.getElementById("mobil");
+
+
+        frmMobil.onsubmit = function (evt) {
+            evt.preventDefault();
+            datamengde = Number(inpDM.value);
+            antSamtaler = Number(inpSamtaler.value);
+            ringetid = Number(inpRingetid.value);
+            antSMS = Number(inpSMS.value);
+            antMMS = Number(inpMMS.value);
+            var pris = datamengde * 10 + antSamtaler * 0.89 + ringetid * 0.39 + antSMS * 0.69 + antMMS * 1.99;
+            mobil.innerHTML = pris + " kr";
+        };
+
+        var frukter = ["banan", "eple", "pære", "ananas", "vannmelon"];
+
+        document.write(`<p>Siste frukt er ${frukter[4]}</p>`);
+
+        var frukt1 = {
+            navn : "banan",
+            pris : "4 kr"
+        };
+
+        var frukt2 = {
+            navn : "eple",
+            pris : "5 kr"
+        };
+
+        var frukt3 = {
+            navn : "mango" ,
+            pris : "14 kr"
+        };
+
+        frukt2.pris = "3 kr";
+
+        document.write(`Eplet koster ${frukt2.pris}`);
+
+    </script>
+
+</body>
+</html>

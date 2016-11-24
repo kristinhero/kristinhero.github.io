@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timeplan Sandvika vgs</title>
+    <style>
+
+        * {
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height: 100%;
+        }
+
+        #inpFrm {
+            height: 100%;
+            width: 30%;
+            line-height: 10px;
+            font-size: 10px;
+        }
+        #inpFrm > input {
+            display: block;
+        }
+
+        table {
+            width: 800px;
+            height: 624px;
+        }
+
+        #time1Ma {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form id="inpFrm">
+        <label>Mandag</label>
+        <input id="antFagMa" type="number" placeholder="Antall fag mandag" required/>
+        <input id="fag1Ma" type="text" placeholder="Første fag" required/>
+        <input id="fag1TimerMa" type="number" placeholder="Antall timer med dette faget" required/>
+        <input id="fag2Ma" type="text" placeholder="Evt. andre fag"/>
+        <input id="fag2TimerMa" type="number" placeholder="Antall timer med dette faget"/>
+        <label>Tirsdag</label>
+        <input type="number" placeholder="Antall fag tirsdag"/>
+        <input type="text" placeholder="Første fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <input type="text" placeholder="Evt. andre fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <label>Onsdag</label>
+        <input type="number" placeholder="Antall fag onsdag"/>
+        <input type="text" placeholder="Første fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <input type="text" placeholder="Evt. andre fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <label>Torsdag</label>
+        <input type="number" placeholder="Antall fag torsdag"/>
+        <input type="text" placeholder="Første fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <input type="text" placeholder="Evt. andre fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <label>Fredag</label>
+        <input type="number" placeholder="Antall fag fredag"/>
+        <input type="text" placeholder="Første fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <input type="text" placeholder="Evt. andre fag"/>
+        <input type="number" placeholder="Antall timer med dette faget"/>
+        <button type="submit">Lag timeplan</button>
+    </form>
+
+    <table>
+        <colgroup>
+            <col id="Mandag"/>
+            <col/>
+            <col/>
+            <col/>
+            <col/>
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Mandag</th>
+                <th>Tirsdag</th>
+                <th>Onsdag</th>
+                <th>Torsdag</th>
+                <th>Fredag</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="time1">
+                <td id="time1Ma"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="time2">
+                <td id="time2Ma"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var inpFrm = document.getElementById("inpFrm");
+        var antFagMa = document.getElementById("antFagMa");
+        var fag1Ma = document.getElementById("fag1Ma");
+        var fag1TimerMa = document.getElementById("fag1TimerMa");
+        var fag2Ma = document.getElementById("fag2Ma");
+        var fag2TimerMa = document.getElementById("fag2TimerMa");
+        var time1Ma = document.getElementById("time1Ma");
+        var time2Ma = document.getElementById("time2Ma");
+
+        inpFrm.onsubmit = function(evt){
+            evt.preventDefault();
+            time1Ma.innerHTML = fag1Ma.value;
+            time1Ma.style.height = fag1TimerMa * 75 + 75;
+        };
+
+
+    </script>
+
+</body>
+</html>

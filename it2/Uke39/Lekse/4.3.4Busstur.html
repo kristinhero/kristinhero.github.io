@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bussbillett</title>
+</head>
+<body>
+
+    <h1 id="overskrift"></h1>
+
+    <script>
+
+        var overskrift = document.getElementById("overskrift");
+        var btype = prompt("Er du barn, ungdom, voksen eller pensjonist?");
+
+        switch(btype){
+            case"barn":
+            case"pensjonist":
+                overskrift.innerHTML = "Billetten koster 20 kr";
+                break;
+            case"ungdom":
+                overskrift.innerHTML = "Billetten koster 25 kr";
+                break;
+            case"voksen":
+                overskrift.innerHTML = "Billetten koster 30 kr";
+                break;
+            default:
+                overskrift.innerHTML = "Beklager, vi kjente ikke igjen det du skrev."
+        }
+
+    </script>
+
+</body>
+</html>

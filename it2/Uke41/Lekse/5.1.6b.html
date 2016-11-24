@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sirkler med dobbel forløkke</title>
+    <style>
+        #canvas {
+            background-color: aliceblue;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "none";
+    ctx.strokeStyle = "blue";
+
+    for(var i = 20; i <= 400; i+=40){
+        for(var j = 20; j <= 400; j+=40){
+            ctx.beginPath();
+            ctx.arc(j,i,10,0,2*Math.PI);
+            ctx.closePath();
+            ctx.stroke();
+        }
+    }
+</script>
+
+</body>
+</html>

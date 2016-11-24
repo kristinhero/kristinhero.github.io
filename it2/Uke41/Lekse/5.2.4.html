@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lage div</title>
+</head>
+<body>
+
+    <script>
+
+        function lagDiv(tekst, bredde, bakgrunnsfarge, tekstfarge){
+            var div = document.createElement("div");
+            div.innerHTML = tekst;
+            div.style.width = bredde + "px";
+            div.style.backgroundColor = bakgrunnsfarge;
+            div.style.color = tekstfarge;
+            document.body.appendChild(div);
+        }
+        lagDiv("Hei på deg.", 400, "blue", "white");
+        lagDiv("Så fin du er i dag!", 300, "green", "white");
+        lagDiv("Hyggelig å se deg igjen.", 200, "lightgreen", "black");
+        lagDiv("Ha det bra!", 100, "yellow", "black");
+
+    </script>
+
+</body>
+</html>

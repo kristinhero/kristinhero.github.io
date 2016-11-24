@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Onclick</title>
+    <style>
+        img {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="h1">Velkommen</h1>
+    <img id="img" src="blomst.jpg" width="400"/>
+    <button id="btn">Knapp</button>
+    <div id="visTekst"></div>
+
+    <script>
+
+        var h1 = document.getElementById("h1");
+        var img = document.getElementById("img");
+        var btn = document.getElementById("btn");
+        var visTekst = document.getElementById("visTekst");
+
+        h1.onclick = function(){
+            visTekst.innerHTML = "Du klikket på overskriften.";
+        };
+        img.onclick = function(){
+            visTekst.innerHTML = "Du klikket på bildet:";
+        };
+        btn.onclick = function(){
+            visTekst.innerHTML = "Du klikket på knappen."
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vekkerklokka</title>
+    <style>
+
+        .klokke > div {
+            display: inline-block;
+            background-color: darkorchid;
+            color: ghostwhite;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 42px;
+            padding: 5px;
+        }
+        .alarm > div {
+            display: inline-block;
+            background-color: fuchsia;
+            color: ghostwhite;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 42px;
+            padding: 5px;
+        }
+        #snooze {
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="klokke">
+
+        <div id="time">00</div>
+        <div>:</div>
+        <div id="minutt">00</div>
+
+    </div>
+
+    <div class="alarm">
+        <div id="timealarm" contenteditable="true">00</div>
+        <div>:</div>
+        <div id="minuttalarm" contenteditable="true">00</div>
+    </div>
+
+    <button id="snooze">snooze</button>
+    <div>Last inn siden på nytt for å skru av alarmen.</div>
+
+    <script>
+        var time = document.getElementById("time");
+        var minutt = document.getElementById("minutt");
+        var timealarm = document.getElementById("timealarm");
+        var minuttalarm = document.getElementById("minuttalarm");
+        var snooze = document.getElementById("snooze");
+
+        var ac = new AudioContext();
+
+        function sjekkAlarm() {
+            var timerErLike = (time.innerHTML == timealarm.innerHTML);
+            var minutterErLike = (minutt.innerHTML == minuttalarm.innerHTML);
+
+            if(timerErLike && minutterErLike){
+                var osc = ac.createOscillator();
+                osc.connect(ac.destination);
+                osc.start(ac.currentTime);
+                osc.stop(ac.currentTime + 0.2);
+            }
+        }
+
+        function visTid() {
+            var nu = new Date();
+            var h = nu.getHours();
+            var m = nu.getMinutes();
+
+            if(h < 10){
+                h = "0" + h;
+            }
+            if(m < 10){
+                m = "0" + m;
+            }
+
+            time.innerHTML = h;
+            minutt.innerHTML = m;
+
+            sjekkAlarm();
+        }
+
+        function addTid() {
+            var min = Number(minuttalarm.innerHTML);
+            var timetall = Number(timealarm.innerHTML);
+            min += 5;
+            if(min < 10) {
+                min = "0" + min;
+            }
+            if(min >= 60) {
+                min = "0" +  (min - 60);
+                timetall += 1;
+            }
+            if (timetall < 10) {
+                timetall = "0" + timetall;
+            }
+            if(timetall > 23){
+                timetall = "0" + (timetall - 24);
+            }
+            minuttalarm.innerHTML = min;
+            timealarm.innerHTML = timetall;
+            console.log(min);
+        }
+
+        visTid();
+        setInterval(visTid, 1000);
+        snooze.onclick = addTid;
+
+    </script>
+
+</body>
+</html>

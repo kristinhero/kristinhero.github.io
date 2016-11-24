@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Endre størrelse på div ved klikk</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        #mus {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: mediumvioletred;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div id="mus"></div>
+
+    <script>
+
+        var mus = document.getElementById("mus");
+        var Interval;
+        var klikket = false;
+
+        document.onmousedown = function() {
+            klikket = true;
+        };
+
+        document.onmouseup = function() {
+            klikket = false;
+        };
+
+        document.onmousemove = function (evt){
+            if (klikket) {
+                mus.style.width = evt.clientX - 20 + "px";
+                mus.style.height = evt.clientY - 20 + "px";
+            }
+        };
+
+
+    </script>
+
+
+</body>
+</html>

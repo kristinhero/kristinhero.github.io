@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Traversere array</title>
+</head>
+<body>
+
+    <script>
+
+        var tallene = [54, 23, 45, 77, 23, 6566, 34, 45, 4234, 323];
+
+        // Traversere array med for of - løkke
+
+        for(var tall of tallene) {
+
+            console.log("Tallet er " + tall);
+        }
+
+        // Hvis vi trenger indeksen
+
+        for(var i=0; i<tallene.length; i++){
+            var tall = tallene[i];
+            console.log(i + ":" + tall);
+        }
+
+    </script>
+
+</body>
+</html>

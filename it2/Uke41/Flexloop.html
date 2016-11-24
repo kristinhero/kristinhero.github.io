@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flexloop</title>
+    <style>
+
+        #fleksboks {
+            background-color: aquamarine;
+            display: flex;
+            height: 400px;
+        }
+        #fleksboks > div {
+            background-color: chartreuse;
+            margin: 1px;
+            flex: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="fleksboks"></div>
+
+    <script>
+        var fleksboks = document.getElementById("fleksboks");
+
+        var i = 1;
+        while(i < 30){
+            var stripe = document.createElement("div");
+            stripe.style.transform = `scale(${i / 60})`;
+
+            fleksboks.appendChild(stripe);
+            i++;
+        }
+
+    </script>
+
+</body>
+</html>

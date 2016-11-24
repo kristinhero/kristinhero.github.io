@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>While linjer</title>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+        #papir {
+            background-color: lightcoral;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #papir circle {
+            fill: indigo;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="papir" height="400" width="400"></canvas>
+
+<script>
+
+    var papir = document.getElementById("papir");
+    var ctx = papir.getContext("2d");
+    var i = 0;
+
+    while(i < 400) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(400, i);
+        ctx.closePath();
+        ctx.stroke();
+        i++;
+    }
+
+</script>
+
+</body>
+</html>

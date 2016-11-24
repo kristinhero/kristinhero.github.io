@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <div id="info"></div>
+
+    <script>
+        
+        // document.getElementById("info").innerHTML = "Ny tekst"; erstattes av det under
+
+        var info = document.getElementById("info");
+
+        // info.innerHTML = "Ny tekst";
+
+        var bredde = prompt("Hvor bredt er arket?");
+        var hoyde = prompt("Hvor høyt er arket?");
+
+        // Gjør vi om til tall:
+        bredde = Number(bredde);
+        hoyde = Number(hoyde);
+
+        var areal = bredde * hoyde;
+
+        info.innerHTML = "Arealet av arket er " + areal;
+
+    </script>
+
+</body>
+</html>

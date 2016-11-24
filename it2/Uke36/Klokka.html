@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Klokka</title>
+</head>
+<body>
+
+<canvas id="minCanvas" width="600" height="400">
+    Din nettleser støtter ikke canvas-elementet
+</canvas>
+
+<script>
+
+    var minCanvas = document.getElementById("minCanvas");
+    var ctx = minCanvas.getContext("2d");
+
+    function degToRad(deg) {
+        return Math.PI * deg / 180;
+    }
+
+    function tegn() {
+        var dato = new Date();
+        var grader = dato.getSeconds() * 6;
+
+        ctx.clearRect(0, 0, 400, 400); // Fjerner alt innhold
+
+        ctx.beginPath();
+        ctx.arc(200, 200, 150, degToRad(0), degToRad(grader));
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    setInterval(tegn, 1000);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <input id="inpText" type="text"/>
+    <button id="btn"></button>
+    <p id="hilsen"></p>
+
+    <script>
+
+        var inpText = document.getElementById("inpText");
+        var btn = document.getElementById("btn");
+        var hilsen = document.getElementById("hilsen");
+
+        btn.onclick = function () {
+            if (inpText.value === "Johnny") {
+                hilsen.innerHTML = "Hei Johnny, takk for at du trykket på knappen."
+            } else {
+                hilsen.innerHTML = "Du trykket på knappen."
+            }
+        };
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teste ting</title>
+</head>
+<body>
+
+    <p id="tekst">Dette er en tekst</p>
+
+    <script>
+
+        var tekst = document.getElementById("tekst");
+
+        var farge = prompt("Hvilken farge vil du ha i dag?");
+        var tekstSize = prompt("Hvor store bokstaver vil du ha?");
+
+        document.body.style.backgroundColor = farge;
+        tekst.style.fontSize = tekstSize + "px";
+
+    </script>
+
+</body>
+</html>

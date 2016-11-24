@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Runding</title>
+</head>
+<body>
+
+    <canvas id="minCanvas" width="600" height="400">
+        Din nettleser støtter ikke canvas-elementet
+    </canvas>
+
+    <script>
+
+        var minCanvas = document.getElementById("minCanvas");
+        var ctx = minCanvas.getContext("2d");
+
+        function tegn() {
+
+            ctx.fillStyle = "olive";
+            ctx.fillRect(0, 0, 400, 400);
+
+            var dato = new Date();
+            var r = dato.getSeconds();
+
+            ctx.arc(200, 200, r, 0, Math.PI * 2);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+        }
+
+        setInterval(tegn, 1000);
+
+    </script>
+
+</body>
+</html>

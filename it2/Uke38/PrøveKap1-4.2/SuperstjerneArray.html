@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <p id="visSuperstjerne"></p>
+
+    <script>
+
+        var visSuperstjerne = document.getElementById("visSuperstjerne");
+        var superstjerner = ["Justin Bieber", "Brad Pitt", "Angelina Jolie", "Jennifer Aniston"];
+        var nummer = Math.floor(Math.random() * 4);
+
+        visSuperstjerne.innerHTML = `Dagens superstjerne er ${superstjerner[nummer]}`;
+
+    </script>
+
+</body>
+</html>

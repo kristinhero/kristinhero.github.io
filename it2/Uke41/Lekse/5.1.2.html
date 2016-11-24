@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paragraf</title>
+    <style>
+
+        #hilsen {
+            display: inline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <p id="hilsen">Hei og velkommen til min side</p>
+
+    <script>
+
+        var hilsen = document.getElementById("hilsen"); // henter p-elementet
+
+        function endre() { // oppretter en funksjon for å endre CSSen til p-elementet
+            hilsen.style.backgroundColor = "blue"; // setter bakgrunnsfargen til blå
+            hilsen.style.fontSize = "40px"; // setter skriftstørrelsen til 40 piksler
+        }
+        endre(); // kjører funksjonen
+
+    </script>
+
+</body>
+</html>

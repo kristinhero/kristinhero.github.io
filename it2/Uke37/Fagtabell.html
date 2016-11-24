@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+        table {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <input id="inpFag" type="text" placeholder="Fag"/>
+    <input id="inpDag" type="text" placeholder="Dag"/>
+    <button id="btn"></button>
+
+    <table id="tabell">
+        <thead>
+            <tr>
+                <th>Ukedag</th>
+                <th>Fag</th>
+            </tr>
+        </thead>
+        <tbody id="visInp">
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+
+        var inpFag = document.getElementById("inpFag");
+        var inpDag = document.getElementById("inpDag");
+        var visInp = document.getElementById("visInp");
+        var btn = document.getElementById("btn");
+        var tabell = document.getElementById("tabell");
+
+        btn.onclick = function() {
+            tabell.style.display = "block";
+            visInp.innerHTML += `<tr>
+                <td>${inpDag.value}</td>
+                <td>${inpFag.value}</td>
+            </tr>`;
+            inpFag.value = "";
+            inpDag.value = "";
+        };
+
+
+    </script>
+
+</body>
+</html>

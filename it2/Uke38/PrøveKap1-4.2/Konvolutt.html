@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tegne konvolutt i canvas</title>
+    <style>
+        #canvas {
+            background-color: aliceblue;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" width="1000" height="600"></canvas>
+
+    <script>
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = "10";
+
+        //ytterkant
+        ctx.beginPath();
+        ctx.moveTo(100, 550);
+        ctx.lineTo(900, 550);
+        ctx.lineTo(900, 50);
+        ctx.lineTo(100, 50);
+        ctx.lineTo(100, 550);
+        ctx.closePath();
+        ctx.stroke();
+
+        //øvre lomme
+        ctx.beginPath();
+        ctx.moveTo(100, 50);
+        ctx.lineTo(500, 350);
+        ctx.lineTo(900, 50);
+        ctx.closePath();
+        ctx.stroke();
+
+        //nedre lomme venstre
+        ctx.beginPath();
+        ctx.moveTo(100, 550);
+        ctx.lineTo(410, 285);
+        ctx.closePath();
+        ctx.stroke();
+
+        //nedre lomme høyre
+        ctx.beginPath();
+        ctx.moveTo(900, 550);
+        ctx.lineTo(590, 285);
+        ctx.closePath();
+        ctx.stroke();
+
+        //skjulefirkanter fordi lommen går utenfor
+        ctx.fillStyle = "aliceblue";
+        ctx.fillRect(75, 45, 20, 20);
+        ctx.fillRect(905, 45, 20, 20);
+
+
+    </script>
+
+</body>
+</html>

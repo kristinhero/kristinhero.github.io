@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas</title>
+    <style>
+
+        #minCanvas {
+            background-color: aliceblue;
+        }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="minCanvas" width="600" height="400">
+        Din nettleser støtter ikke canvas-elementet
+    </canvas>
+    <script>
+
+        var minCanvas = document.getElementById("minCanvas");
+        var ctx = minCanvas.getContext("2d");
+
+        ctx.fillStyle = "indigo";
+        ctx.strokeStyle = "yellow";
+        ctx.lineWidth = 10;
+
+        ctx.fillRect(200, 50, 40, 200);
+
+        ctx.moveTo(100, 300);
+        ctx.lineTo(300, 300);
+        ctx.lineTo(300, 350);
+        ctx.lineTo(100, 350);
+        ctx.lineTo(100, 300);
+        ctx.stroke();
+
+    </script>
+
+</body>
+</html>

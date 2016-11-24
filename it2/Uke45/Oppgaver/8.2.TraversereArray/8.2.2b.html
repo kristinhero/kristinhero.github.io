@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bøker</title>
+</head>
+<body>
+
+    <ul id="visBøker">
+
+    </ul>
+
+    <script>
+
+        var visBøker = document.getElementById("visBøker");
+
+        var bøker = [
+            "The Fault in Our Stars",
+            "De urolige",
+            "Mi Briljante Venninne",
+            "Me Before You",
+            "After You"];
+
+        bøker.sort();
+
+        for(var bok of bøker){
+            var li = document.createElement("li");
+            li.innerHTML = bok;
+            visBøker.appendChild(li);
+        }
+
+    </script>
+
+</body>
+</html>

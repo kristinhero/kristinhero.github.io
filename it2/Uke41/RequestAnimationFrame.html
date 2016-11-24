@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+        #fleksboks {
+            background-color: aquamarine;
+            display: flex;
+            height: 400px;
+        }
+        #fleksboks > div {
+            background-color: chartreuse;
+            margin: 1px;
+            flex: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="fleksboks"></div>
+
+    <script>
+        var fleksboks = document.getElementById("fleksboks");
+
+        var i = 0;
+        antall = 60;
+
+        function loop() {
+            var stripe = document.createElement("div");
+            stripe.style.transform = `scale(${i / antall})`;
+            fleksboks.appendChild(stripe);
+            i++; //Øker i med 1
+            if (i < antall) { //Starter loopen på nytt hvis vi ikke er ferdig
+                requestAnimationFrame(loop)
+            }
+        }
+        loop();
+
+    </script>
+
+</body>
+</html>

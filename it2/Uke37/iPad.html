@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>iPad</title>
+    <style>
+        #minCanvas {
+            background-color: aliceblue;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+
+    <canvas id="minCanvas" width="800" height="500"></canvas>
+
+    <script>
+
+        var minCanvas = document.getElementById("minCanvas");
+        var ctx = minCanvas.getContext("2d");
+
+        ctx.strokeStyle = "DarkGrey";
+        ctx.lineWidth = 10;
+        // nede
+        ctx.beginPath();
+        ctx.moveTo(75, 450);
+        ctx.lineTo(725, 450);
+        ctx.closePath();
+        ctx.stroke();
+        // høyre
+        ctx.beginPath();
+        ctx.moveTo(750, 425);
+        ctx.lineTo(750, 75);
+        ctx.closePath();
+        ctx.stroke();
+        // oppe
+        ctx.beginPath();
+        ctx.moveTo(725, 50);
+        ctx.lineTo(75, 50);
+        ctx.closePath();
+        ctx.stroke();
+        // venstre
+        ctx.beginPath();
+        ctx.moveTo(50, 75);
+        ctx.lineTo(50, 425);
+        ctx.closePath();
+        ctx.stroke();
+        // hjørne nede venstre
+        ctx.beginPath();
+        ctx.arc(75, 425, 25, 0.5 * Math.PI, Math.PI);
+        ctx.closePath();
+        ctx.stroke();
+        // hjørne nede høyre
+        ctx.beginPath();
+        ctx.arc(725, 425, 25, 0, 0.5 * Math.PI);
+        ctx.closePath();
+        ctx.stroke();
+        // hjørne oppe høyre
+        ctx.beginPath();
+        ctx.arc(725, 75, 25, 0, 1.5 * Math.PI, true);
+        ctx.closePath();
+        ctx.stroke();
+        // hjørne oppe venstre
+        ctx.beginPath();
+        ctx.arc(75, 75, 25, Math.PI, 1.5 * Math.PI);
+        ctx.closePath();
+        ctx.stroke()
+
+    </script>
+
+</body>
+</html>

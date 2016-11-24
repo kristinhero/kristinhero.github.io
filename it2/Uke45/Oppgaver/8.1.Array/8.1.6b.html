@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pushe array</title>
+</head>
+<body>
+
+<select id="velgBy">
+    <option>Oslo</option>
+    <option>Amsterdam</option>
+    <option>London</option>
+    <option>Paris</option>
+</select>
+<button id="btn">Send inn</button>
+<div id="visByer"></div>
+
+<script>
+
+    var velgBy = document.getElementById("velgBy");
+    var btn = document.getElementById("btn");
+    var visByer = document.getElementById("visByer");
+    var byer = [];
+
+    btn.onclick = function(){
+        byer.push(velgBy.value);
+        /*var by = document.createElement("li");
+        by.innerHTML = inpBy.value;
+        visByer.appendChild(by);*/
+        console.log(byer);
+        visByer.innerHTML = byer.join("</br>")
+    };
+
+</script>
+
+</body>
+</html>

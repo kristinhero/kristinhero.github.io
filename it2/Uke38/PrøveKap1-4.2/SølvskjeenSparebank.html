@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Søvskjeen Sparebank</title>
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="hilsen"></h1>
+
+    <script>
+        var hilsen = document.getElementById("hilsen");
+        var navn = prompt("Ditt navn");
+        var inntekt = prompt("Din inntekt");
+
+        inntekt = Number(inntekt);
+
+        if (inntekt/1000000 > 5 && navn === "Kjell Inge Røkke") {
+            hilsen.innerHTML = `Deres høyhet ${navn},
+            i morgen stenger vi banken for alle andre kunder. Kom når du vil.`;
+        } else if (inntekt/1000000 > 2) {
+            hilsen.innerHTML = `Høystærede ${navn},
+            vi vil sette stor pris på om du kommer nedom for en kopp kaffe og en innbringende prat.`
+        } else if (inntekt/1000000 > 1) {
+            hilsen.innerHTML = `Kjære ${navn},
+            vi kan tilby deg en høyrentekonto med garantert 2% rente de neste 3 år.`;
+        } else {
+            hilsen.innerHTML = `Kjære ${navn},
+            du bør få litt mer sving på inntjeningen hvis vi skal kunne hjelpe deg.`
+        }
+
+
+    </script>
+
+</body>
+</html>

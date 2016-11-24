@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        var land = new Set(["Norge", "USA", "Tyrkia", "Sverige"]);
+
+        land.delete("Tyrkia");
+        land.add("Hellas");
+        console.log(land.has("Hellas"));
+
+        for(var hvertland of land){
+            document.write(hvertland + "<br>");
+        }
+
+    </script>
+
+</body>
+</html>

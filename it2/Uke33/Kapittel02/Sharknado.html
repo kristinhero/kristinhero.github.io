@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <img id="plakat" title="Sharknado" src="sharknado1.jpg" alt="Sharknado"/>
+    <button id="knapp">Bytt plakat</button>
+
+    <script>
+
+        document.getElementById("knapp").onclick = function(){
+            document.getElementById("plakat").title = "Ben Hur";
+            document.getElementById("plakat").src = "sharknado2.jpg";
+            document.getElementById("plakat").style.width = "100%";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.css"/>
+    <title>Velkommen</title>
+    <style>
+
+        body {
+            width: 70%;
+            margin: 0 auto;
+        }
+        .button {
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button class="button" id="btn1">Vis hilsen</button>
+    <button class="button" id="btn2">Vis opplysning</button>
+
+    <h1 id="info">Velkommen til vår side</h1>
+
+    <script>
+
+        var blomst = "Solsikke";
+        document.write("<p>" + blomst + "</p>");
+
+        var hilsen = "<h1>Velkommen til vår side</h1>";
+        var oppl = "<h1>du er vår 100 000-ende besøkende</h1>";
+
+        document.getElementById("btn1").onclick = function () {
+            document.getElementById("info").innerHTML = hilsen;
+        };
+        document.getElementById("btn2").onclick = function () {
+            document.getElementById("info").innerHTML = oppl;
+        };
+
+        var fornavn = "Kristin";
+        var etternavn = "Herø";
+
+        document.write(`<p>Mitt navn er ${fornavn} ${etternavn}</p>`);
+
+        var kundenavn = prompt("Hva er ditt navn?");
+
+        document.write(`<p>Velkommen ${kundenavn}</p>`);
+
+        document.write(`<h2>Invitasjon til klassefest</h2>
+        <p>Vi har gleden av å invitere deg, ${kundenavn}, til årets klassefest fredag 19.september.
+        Festen starter kl. 18:30 og varer ut i de små timer.
+        Serveringen sørger alle gjestene, inkludert ${kundenavn}, for ved at vi alle tar med oss mat på serveringsfat som settes på en felles buffé.
+        Hver enkelt, inkludert ${kundenavn}, tar med seg ønskede drikkevarer. Brød / smør, dessert og kaffe blir ordnet av Festkomiteen.
+        For å kunne planlegge oppdekning er det påmelding til klassefesten.
+        Festkomiteen ønsker å stelle i stand til en hyggelig og morsom fest i fellesskapets tegn med god mat,
+        hyggelig samvær og dans.  Vi ønsker deg, ${kundenavn}, HJERTELIG VELKOMMEN til Klassefest,
+        og håper at riktig mange har lyst til å komme! Håper på å se deg, ${kundenavn} </p><p>Hilsen Festkomiteen</p>`);
+
+        var adj1 = prompt("Gi oss et adjektiv");
+        var adj2 = prompt("Gi oss et spennende adjektiv");
+        var adj3 = prompt("Gi oss et kreativt adjektiv");
+        var adj4 = prompt("Gi oss et lukrativt adjektiv");
+        var adj5 = prompt("Gi oss et overraskende adjektiv");
+        var adj6 = prompt("Gi oss et adjektiv");
+
+        document.write(`<h3>Justin Biebers adjektivshistorie</h3>
+        <p>En dag den ${adj1} Justin Bieber stod på sin ${adj2} scene og sang på den
+        ${adj3} sangen Girlfriend, fikk han plutselig øye på en ${adj4} jente blant det ${adj5} publikummet.
+        Jenta så ekstra glad ut denne ${adj6} konsertdagen..
+        Den ${adj1} jenta synes musikken til ${adj2} Justin var veldig veldig _${adj3} og ${adj4}.
+        Hun brukte ofte å høre på de ${adj5} Bieber-sangene når hun var hjemme i sitt eget ${adj6} rom.
+        Til og med når hun skulle gjøre de ${adj1} leksene hun hadde fått tildelt på den ${adj2} skolen sin.
+        Men denne dagen hadde hun heldigvis ikke hatt en eneste ${adj3} lekse.
+        Rett etter hun hadde spist en ${adj4} middag sammen med den ${adj5} familien sin,
+        hadde hun blitt hentet av sin ${adj5} venninne.
+        Sammen hadde de satt seg på en ${adj6} buss og reist til den ${adj1} konserten
+         til den ${adj2} Justin Bieber.
+        Og gjett om de ble fornøyde! Den ${adj3} jenta og hennes ${adj4} venninne hylte
+        noen ${adj5} hyl da ${adj6} Justin sendte de et ${adj1} slengkyss og vinket til de med sin ${adj2} hånd.
+        Og når han i tillegg kastet en ${adj3} hjerteformet bamse slik at den landet rett i hendene til jenta holdt de på å besvime.
+        Dagen var perfekt! </p>`)
+
+    </script>
+
+</body>
+</html>

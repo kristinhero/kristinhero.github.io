@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <input type="text" id="inpFarge"/>
+
+    <script>
+
+        var inpFarge = document.getElementById("inpFarge");
+
+        inpFarge.oninput = function() {
+            document.body.style.backgroundColor = inpFarge.value;
+        }
+
+    </script>
+
+</body>
+</html>

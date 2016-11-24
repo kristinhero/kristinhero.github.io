@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <canvas id="canvas" width="800" height="500">Din nettleser støtter ikke canvas</canvas>
+
+    <script>
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "Blue";
+
+        canvas.onclick = function(evt){
+            var x = evt.clientX;
+            var y = evt.clientY;
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(x, y);
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+    </script>
+
+</body>
+</html>

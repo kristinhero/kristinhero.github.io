@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Objekter i array</title>
+</head>
+<body>
+
+    <script>
+
+        var personer = [{
+                navn: "Aurora",
+                alder: 13
+            }, {
+                navn: "Per",
+                alder: 42
+            }, {
+                navn: "Geir",
+                alder: 76
+            }, {
+                navn: "Kari",
+                alder: 20
+        }];
+
+        for(var person of personer){
+            var div = document.createElement("div");
+            div.innerHTML = `<br> Navn: ${person.navn},<br> Alder: ${person.alder}`;
+            document.body.appendChild(div);
+        }
+        personer.sort(function(a,b){
+            return a.alder - b.alder
+        });
+
+        for(var person of personer){
+            document.write("<br>" + person.navn);
+        }
+        personer.reverse();
+
+        for(var person of personer){
+            var div = document.createElement("div");
+            div.innerHTML = `<br> Navn: ${person.navn},<br> Alder: ${person.alder}`;
+            document.body.appendChild(div);
+        }
+
+    </script>
+
+</body>
+</html>

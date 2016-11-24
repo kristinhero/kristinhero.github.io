@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>While og div</title>
+    <style>
+
+        .firkant {
+            width: 24px;
+            height: 24px;
+            float: left;
+            color: white;
+            margin: 3px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 24px;
+            font-family: Arial, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script>
+
+        i = 1;
+
+        while(i <= 400) {
+            var firkant = document.createElement("div");
+            firkant.className = "firkant";
+            firkant.innerHTML = i;
+            firkant.style.backgroundColor = "Purple";
+
+            if(i % 2 === 0){
+                firkant.style.backgroundColor = "Blue";
+            }
+            if(i % 10 === 0){
+                firkant.style.borderRadius = "50%";
+            }
+
+            document.body.appendChild(firkant);
+
+            i++;
+        }
+
+    </script>
+
+</body>
+</html>

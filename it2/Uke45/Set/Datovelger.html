@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrere når vi er opptatt</title>
+</head>
+<body>
+
+    <input id="inpDato" type="date"/>
+    <br/>
+    <div id="info"></div>
+    <ul id="dager"></ul>
+
+    <script>
+
+        var inpDato = document.getElementById("inpDato");
+        var dager = document.getElementById("dager");
+        var info = document.getElementById("info");
+
+        var opptatteDager = new Set();
+
+        function fjern(dag){
+            opptatteDager.delete(dag);
+            visDager();
+        }
+
+        function visDager() {
+            dager.innerHTML = "";
+            for(var dag of opptatteDager) {
+                dager.innerHTML += `<li id="${dag}" onclick="fjern('${dag}')">${dag}</li>`;
+            }
+        }
+        
+        inpDato.onchange = function () {
+            var valgtDag = inpDato.value;
+            if(opptatteDager.has(valgtDag)){
+                info.innerHTML = "Du er allerede opptatt"
+            } else {
+                info.innerHTML = "Nå er du opptatt " + valgtDag;
+                opptatteDager.add(valgtDag);
+            }
+            visDager();
+        }
+    </script>
+
+</body>
+</html>

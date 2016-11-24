@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sirkelen</title>
+    <style>
+        /* Kommentar i CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        #inpRadius {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #sirkel {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            background-color: lightseagreen;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <input id="inpRadius" type="number" placeholder="radius"/>
+    <!--En sirkel-->
+    <div id="sirkel"></div>
+    <p id="info"></p>
+
+    <script>
+        // Ulike måter å kommentere på
+        // Kommenter mye på eksamen!:)
+        var inpRadius = document.getElementById("inpRadius");
+        var info = document.getElementById("info");
+        var sirkel = document.getElementById("sirkel");
+
+        inpRadius.oninput = function() {
+            var r = Number(inpRadius.value);
+            // var areal = Math.PI * r * r;
+            var areal = Math.PI * Math.pow(r, 2);
+            var omkrets = 2 * Math.PI * r;
+
+            info.innerHTML = `a = ${areal.toFixed(2)} o = ${omkrets.toFixed(2)}`;
+            sirkel.style.width = `${r * 2}px`;
+            sirkel.style.height = `${r * 2}px`;
+        };
+
+    </script>
+
+
+
+</body>
+</html>

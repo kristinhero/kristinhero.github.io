@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        var frekvenser = [440, 880, 440, 880, 1200, 880];
+
+        var ac = new AudioContext();
+
+        function plong(evt) {
+            var xpos = evt.clientX;
+
+            for(var i = 0; i < frekvenser.length; i++){
+                var frekvens = frekvenser[i] + xpos;
+
+                var osc = ac.createOscillator();
+                osc.connect(ac.destination);
+
+                osc.frequency.value = frekvens;
+                osc.start(ac.currentTime + i / 4); //Spiller lyden etter i sekunder
+                osc.stop(ac.currentTime + i / 4 + 0.2); //Stopper etter 0.2 sekunder
+            }
+        }
+        document.onclick = plong;
+
+    </script>
+
+</body>
+</html>

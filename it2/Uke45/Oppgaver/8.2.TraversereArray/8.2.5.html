@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <form id="inpFrm">
+
+        <input id="inpNavn" type="text" placeholder="Ditt navn"/>
+        <input id="inpAntall" type="number" placeholder="Antall filmer du har sett i år"/>
+        <button type="submit">Send inn</button>
+
+    </form>
+
+    <ol id="visInfo"></ol>
+
+    <script>
+
+        var inpFrm = document.getElementById("inpFrm");
+        var inpNavn = document.getElementById("inpNavn");
+        var inpAntall = document.getElementById("inpAntall");
+        var visInfo = document.getElementById("visInfo");
+
+        var personer = [];
+
+        function visPersoner() {
+            visInfo.innerHTML = "";
+            for(var person of personer){
+                var li = document.createElement("li");
+                li.innerHTML = `Navn: ${person.navn}, Antall filmer: ${person.filmer}`;
+                visInfo.appendChild(li);
+            }
+        }
+
+        inpFrm.onsubmit = function (evt) {
+            evt.preventDefault();
+            var antFilmer = Number(inpAntall.value);
+            var nypers = {
+                navn: inpNavn.value,
+                filmer: antFilmer
+            };
+            personer.push(nypers);
+            personer.sort(function(a,b){
+               return b.filmer - a.filmer
+            });
+            inpNavn.value = "";
+            inpAntall.value = "";
+            console.log(personer);
+            visPersoner();
+        };
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    var dato = new Date();
+
+    var sekunder = dato.getSeconds();
+
+    if(sekunder <= 15) {
+        document.write("Øvre høyre kake");
+    } else  if (sekunder <= 30)
+    {
+        document.write("Nedre høyre kake");
+    } else if (sekunder <= 45)
+    {
+        document.write("Nedre venstre kake");
+    } else if (sekunder <= 60)
+    {
+        document.write("Øvre venstre kake");
+    }
+
+    document.write("<br>Sekunder:" + sekunder);
+
+</script>
+
+</body>
+</html>

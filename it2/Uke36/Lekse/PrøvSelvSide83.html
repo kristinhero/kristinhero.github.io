@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+        #fugl {
+            width: 70%;
+        }
+        #visTerning {
+            width: 30%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <img id="fugl" src=""/>
+    <p id="terning"></p>
+    <img id="visTerning" src=""/>
+    <h1>Kalkulator</h1>
+    <p id="visTall"></p>
+
+    <script>
+
+        var land = prompt("Hvilket land er du i nå?");
+        var by = prompt("Hva er hovedstaden i det landet?");
+
+        if (land === "Norge") {
+            document.write("Ikke verst. (1/2)");
+            if (by === "Oslo") {
+                document.write("Supert! (2/2)");
+            }
+        } else {
+            document.write("Det burde du kanskje vite.")
+        }
+
+        var fugl = document.getElementById("fugl");
+        var random = Math.random();
+
+        if (random <= 0.33) {
+            fugl.src = "bilder/fossekall.jpg";
+        } else if (random <= 0.66)
+        {
+            fugl.src = "bilder/struts.jpg";
+            fugl.style.width = "40%";
+        } else {
+            fugl.src = "bilder/ørn.jpg";
+        }
+
+        var terning = document.getElementById("terning");
+        var visTerning = document.getElementById("visTerning");
+        var tall = Math.random() * 5 + 1;
+
+        if (tall < 2) {
+            terning.innerHTML = "Du fikk terningkast 1";
+            visTerning.src = "bilder/terningkast1.jpg";
+            visTerning.style.width = "70%";
+        } else if (tall < 3) {
+            terning.innerHTML = "Du fikk terningkast 2";
+            visTerning.src = "bilder/terningkast2.png";
+        } else if (tall < 4) {
+            terning.innerHTML = "Du fikk terningkast 3";
+            visTerning.src = "bilder/terningkast3.png";
+        } else if (tall < 5) {
+            terning.innerHTML = "Du fikk terningkast 4";
+            visTerning.src = "bilder/terningkast4.jpg";
+        } else if (tall < 6) {
+            terning.innerHTML = "Du fikk terningkast 5";
+            visTerning.src = "bilder/terningkast6.jpg";
+        }
+
+        var visTall = document.getElementById("visTall");
+        var tall1 = prompt("Si et tall");
+        var tall2 = prompt("Si et tall til");
+        var regneart = prompt("Vil du addere, substrahere, multiplisere eller dividere?");
+
+        tall1 = Number(tall1);
+        tall2 = Number(tall2);
+
+        if (regneart === "addere") {
+            var svar1 = tall1 + tall2;
+            visTall.innerHTML = "Svaret er " + svar1;
+        } else if (regneart === "substrahere") {
+            var svar2 = tall1 - tall2;
+            visTall.innerHTML = "Svaret er " + svar2;
+        } else if (regneart === "multiplisere") {
+            var svar3 = tall1 * tall2;
+            visTall.innerHTML = "Svaret er " + svar3;
+        } else if (regneart === "dividere") {
+            var svar4 = tall1 / tall2;
+            visTall.innerHTML = "Svaret er " + svar4;
+        }
+
+    </script>
+
+</body>
+</html>

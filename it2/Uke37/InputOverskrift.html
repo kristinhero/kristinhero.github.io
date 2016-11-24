@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <h1 id="visInp"></h1>
+
+    <input id="inph1" type="text"/>
+
+    <script>
+
+        var inph1 = document.getElementById("inph1");
+        var visInp = document.getElementById("visInp");
+
+
+        inph1.oninput = function() {
+            visInp.innerHTML = inph1.value;
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lister i Javascript</title>
+</head>
+<body>
+
+    <script>
+        // Definerer et array
+        var filmer = ["Sharknado", "E.T.", "Jaws"];
+
+        // Dette er en indeksert liste
+        // Starter på 0
+        document.write( filmer[2] ); //Jaws
+
+        // Endre film på plass 1
+        filmer[1] = "Poltergeist";
+
+        document.write("<br>" + filmer[1]); // Poltergeist
+
+        // Gå gjennom alle filmene:
+        for(var film of filmer) {
+            alert(film);
+        }
+    </script>
+
+</body>
+</html>

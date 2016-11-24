@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filmobjekter</title>
+</head>
+<body>
+
+
+
+    <script>
+        var fornavn = "Gløer";
+        var etternavn = "Langslet";
+
+        // Objekter er klumper med informasjon
+        // object literal - på engelsk
+
+        var sharknado = {
+            tittel : "Sharknado",
+            lengde : "01:26",
+            regissor : "David Lynch"
+        };
+
+        // document.write(sharknado.tittel);
+
+        sharknado.lengde = "02:45";
+
+        document.write(`${sharknado.tittel} er ${sharknado.lengde} lang,
+         og er regissert av ${sharknado.regissor}`);
+
+    </script>
+
+</body>
+</html>

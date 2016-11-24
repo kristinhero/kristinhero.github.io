@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bestille deo</title>
+</head>
+<body>
+
+    <script>
+
+        var navn = "Gløer"; // String
+        var vekt = 90; // Number
+
+        // Casting betyr å gjøre om en datatype fra en type til en annen
+        // Som regel gjør vi om tekst til tall
+
+        var antHerre = prompt("Antall herredeodoranter");
+        var antDame = prompt("Antall damedeodoranter");
+
+        document.write("Totalt antall deoer: ");
+        document.write(antHerre + antDame);
+
+        document.write("<br>");
+        document.write(Number(antHerre) + Number(antDame));
+
+        antHerre = Number(antHerre); // Caster vi datatypen til Number
+
+        document.write("<br>");
+        document.write(typeof antHerre); // Viser datatype
+
+    </script>
+
+</body>
+</html>

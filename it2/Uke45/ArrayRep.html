@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Basic array</title>
+</head>
+<body>
+
+    <script>
+
+        var tallene = [3, 4, 23, 665, 34, 652, 34, 65, 13, 454];
+
+        tallene.push(33); //Legger til helt til slutt
+        tallene.unshift(100); //Legger til på starten
+        tallene.pop(); // Tar vekk den siste - som er 33
+        tallene.shift(); //Tar vekk den første - som er 100
+        tallene.splice(3, 1); // Tar vekk 665
+        tallene.splice(1, 1, 13); // Erstatter 4 med 13
+
+        console.log(tallene);
+
+    </script>
+
+</body>
+</html>

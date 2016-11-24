@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filmer</title>
+</head>
+<body>
+
+    <h1>Din film</h1>
+
+    <form id="frmFilm">
+        <input id="inpTittel" type="text" placeholder="Filmens tittel"/>
+        <input id="inpLengde" type="text" placeholder="Filmens lengde"/>
+        <input id="inpRegissor" type="text" placeholder="Filmens regissør"/>
+        <button type="submit">Registrer din film</button>
+    </form>
+
+    <p id="dinFilm"></p>
+
+    <script>
+
+        var frmFilm = document.getElementById("frmFilm");
+        var inpTittel = document.getElementById("inpTittel");
+        var inpLengde = document.getElementById("inpLengde");
+        var inpRegissor = document.getElementById("inpRegissor");
+        var dinFilm = document.getElementById("dinFilm");
+
+        frmFilm.onsubmit = function () {
+            tittel = inpTittel.value;
+            lengde = inpLengde.value;
+            regissor = inpRegissor.value;
+
+            var film = {
+                tittel : tittel,
+                lengde : lengde,
+                regissor : regissor
+            };
+            dinFilm.innerHTML = film.tittel;
+        };
+
+
+
+
+    </script>
+
+</body>
+</html>

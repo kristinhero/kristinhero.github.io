@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sirkelfunksjon</title>
+    <style>
+        #canvas {
+            background-color: aliceblue;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="300"></canvas>
+
+<script>
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var x = 100;
+    var y = 60;
+    var r = 50;
+
+    ctx.fillStyle = "none";
+    ctx.strokeStyle = "blue";
+
+    function tegnSirkel(){
+        ctx.beginPath();
+        ctx.arc(x,y,r,0,2*Math.PI);
+        ctx.closePath();
+        ctx.stroke();
+    }
+    function flyttX(){
+        x += 20;
+    }
+    function flyttY(){
+        y += 20;
+    }
+
+    for(var i=0; i<10; i++){
+        tegnSirkel();
+        flyttX();
+        flyttY();
+    }
+
+</script>
+
+</body>
+</html>

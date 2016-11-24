@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dyr og mat</title>
+    <style>
+
+        #bilde {
+            width: 60%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <p id="natur">Vakker natur.</p>
+    <p id="dyretDitt">Mitt favorittdyr er høne.</p>
+    <p id="film"></p>
+
+    <h1>Min handleliste</h1>
+    <ul id="handleliste"></ul>
+
+    <img src="images/hund.jpg" id="bilde"/>
+
+    <script>
+
+        var natur = document.getElementById("natur");
+
+        natur.innerHTML = "For en fin natur vi har.";
+
+        var dyr = prompt("Hva er ditt favorittdyr?");
+        var dyretDitt = document.getElementById("dyretDitt");
+        dyretDitt.innerHTML = `Favorittdyret ditt er ${dyr}`;
+
+        var filmer = ["Titanic"," Avatar"," The Godfather"];
+        var film = document.getElementById("film");
+
+        film.innerHTML = filmer;
+
+        var handleliste = document.getElementById("handleliste");
+        var ingr1 = prompt("Hva er det første du skal ha?");
+        var ingr2 = prompt("Hva er det andre du skal ha?");
+        var ingr3 = prompt("Hva er det tredje du skal ha?");
+
+        handleliste.innerHTML = `<li>${ingr1}</li>
+        <li>${ingr2}</li>
+        <li>${ingr3}</li>`;
+
+        var bilde = document.getElementById("bilde");
+        bilde.src = "images/bie.jpg";
+
+    </script>
+
+</body>
+</html>

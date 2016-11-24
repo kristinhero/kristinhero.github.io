@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #knapper {
+            margin: 0 auto;
+        }
+        #knapper > button {
+            width: 40px;
+            height: 40px;
+            border: 2px solid crimson;
+            border-radius: 10%;
+            background-color: transparent;
+            outline: none;
+        }
+        #knapper > button:hover {
+            background-color: crimson;
+        }
+        #notelinje {
+            background-image: url(Notelinje.png);
+            background-size: cover;
+            background-position: center;
+            height: 56px;
+            width: 739px;
+            position: relative;
+            margin: 0 auto;
+        }
+        #notelinje > .note {
+            position: absolute;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 42.2px;
+            width: 23.8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lag et noteark!</h1>
+    <div id="knapper">
+        <button id="lavC">C</button>
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+        <button id="g">G</button>
+        <button id="a">A</button>
+        <button id="h">H</button>
+        <button id="høyC">C</button>
+    </div>
+    <div id="notelinje"></div>
+    <button id="btn">Spill av!</button>
+
+    <script>
+
+        var c1 = 261.626;
+        var d = 293.665;
+        var e = 329.628;
+        var f = 349.228;
+        var g = 391.995;
+        var a = 440.000;
+        var h = 493.883;
+        var c2 = 523.25;
+
+        var btn = document.getElementById("btn");
+        var notelinje = document.getElementById("notelinje");
+        var left = 45;
+        var knapper = document.querySelectorAll("#knapper > button");
+
+        for(var knapp of knapper) {
+            knapp.onclick = lagNote;
+        }
+
+        var spillnoter = [];
+        var ac = new AudioContext();
+
+        function lagNote(){
+            var note = document.createElement("div");
+            note.className = "note";
+            note.id = this.id;
+            note.style.backgroundImage = "url(note.png)";
+            note.style.left = left + "px";
+
+            switch(note.id){
+                case "lavC":
+                    note.style.backgroundImage = "url(lavC.png)";
+                    note.style.backgroundSize = "70%";
+                    note.style.height = "45px";
+                    note.style.top = 17.2 + "px";
+                    spillnoter.push(c1);
+                    break;
+                case "d":
+                    note.style.top = 14.5 + "px";
+                    spillnoter.push(d);
+                    break;
+                case "e":
+                    note.style.top = 11.5 + "px";
+                    spillnoter.push(e);
+                    break;
+                case "f":
+                    note.style.top = 8.2 + "px";
+                    spillnoter.push(f);
+                    break;
+                case "g":
+                    note.style.top = 5.2 + "px";
+                    spillnoter.push(g);
+                    break;
+                case "a":
+                    note.style.top = 1.4 + "px";
+                    spillnoter.push(a);
+                    break;
+                case "h":
+                    note.style.backgroundImage = "url(noteoppned.png)";
+                    note.style.backgroundSize = "32px 34px";
+                    note.style.top = 16 + "px";
+                    spillnoter.push(h);
+                    break;
+                case "høyC":
+                    note.style.backgroundImage = "url(noteoppned.png)";
+                    note.style.backgroundSize = "32px 34px";
+                    note.style.top = 13 + "px";
+                    spillnoter.push(c2);
+                    break;
+            }
+
+            if (left > 700){
+                note.style.display = "none";
+            }
+
+            notelinje.appendChild(note);
+            console.log(spillnoter);
+            left += 20;
+        }
+        function spillAv(){
+            for(var i = 0; i < spillnoter.length; i++){
+                var frekvens = spillnoter[i];
+                var osc = ac.createOscillator();
+                var gain = ac.createGain();
+                osc.connect(ac.destination + gain);
+                osc.frequency.value = frekvens;
+                gain.gain.setValueAtTime(i, ac.currentTime);
+                osc.start(ac.currentTime + i);
+                osc.stop(ac.currentTime + i + 0.8);
+            }
+        }
+        btn.onclick = spillAv;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lisa gikk til skolen</title>
+    <style>
+
+        body {
+            background-image: url(korps.jpg);
+            background-size: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+    <script>
+
+        var c = 261.626;
+        var d = 293.665;
+        var e = 329.628;
+        var f = 349.228;
+        var g = 391.995;
+        var a = 440.000;
+        var h = 493.883;
+
+        var frekvenser = [c, d, e, f, g, g, a, a, a, a, g, f, f, f, f, e, e, d, d, d, d, c];
+
+        var ac = new AudioContext();
+
+        function plong(evt) {
+            var xpos = evt.clientX;
+
+            for(var i = 0; i < frekvenser.length; i++){
+                var frekvens = frekvenser[i];
+
+                var osc = ac.createOscillator();
+                osc.connect(ac.destination);
+
+                osc.frequency.value = frekvens;
+
+                if(i === 4){
+                    osc.start(ac.currentTime + i);
+                    osc.stop(ac.currentTime + i + 0.8);
+                } else if(i === 5){
+                    osc.start(ac.currentTime + i + 0.4);
+                    osc.stop(ac.currentTime + i + 1.2);
+                } else if(i === 10){
+                    osc.start(ac.currentTime + i + 0.8);
+                    osc.stop(ac.currentTime + i + 2.4);
+                } else if(i === 15){
+                    osc.start(ac.currentTime + i + 2.4);
+                    osc.stop(ac.currentTime + i + 3.2);
+                } else if(i === 16){
+                    osc.start(ac.currentTime + i + 2.8);
+                    osc.stop(ac.currentTime + i + 3.6);
+                } else if(i === frekvenser.length - 1){
+                    osc.start(ac.currentTime + i + 3.6);
+                    osc.stop(ac.currentTime + i + 5.2);
+                } else if(i > 16){
+                    osc.start(ac.currentTime + i + 3.6);
+                    osc.stop(ac.currentTime + i + 4.2);
+                } else if(i > 10){
+                    osc.start(ac.currentTime + i + 2.4);
+                    osc.stop(ac.currentTime + i + 2.8);
+                } else if(i > 5){
+                    osc.start(ac.currentTime + i + 0.8);
+                    osc.stop(ac.currentTime + i + 1.2);
+                } else {
+                    osc.start(ac.currentTime + i);
+                    osc.stop(ac.currentTime + i + 0.4);
+                }
+            }
+        }
+        document.onclick = plong;
+
+    </script>
+
+</body>
+</html>

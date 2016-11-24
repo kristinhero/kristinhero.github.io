@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bestille deo med inputfelt</title>
+</head>
+<body>
+
+    <form id="frmBestilling">
+
+        <input id="inpHerre" type="number" placeholder="Antall herre"/>
+        <input id="inpDame" type="number" placeholder="Antall dame"/>
+
+        <button type="submit">Send inn bestilling</button>
+
+    </form>
+
+    <p id="info"></p>
+
+    <script>
+
+        var frmBestilling = document.getElementById("frmBestilling");
+        var inpHerre = document.getElementById("inpHerre");
+        var inpDame = document.getElementById("inpDame");
+        var info = document.getElementById("info");
+
+        frmBestilling.onsubmit = function(evt) {
+            evt.preventDefault();
+
+            var antHerre = Number(inpHerre.value); // caster til tall
+            var antDame = Number(inpDame.value);
+
+            // info.innerHTML = "Total: " + (antHerre + antDame);
+
+            info.innerHTML = `Antall dame er ${antDame}, <br> Totalen er ${antHerre + antDame}`;
+
+        };
+
+    </script>
+
+</body>
+</html>

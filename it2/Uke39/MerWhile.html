@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <div id="info"></div>
+
+    <script>
+
+        var info = document.getElementById("info");
+
+        var x = 1;
+        var sum = 0;
+
+        while(x <= 100) {
+            //sum = sum + x;
+            sum += x; //samme som over
+
+            x++;
+        }
+
+        info.innerHTML = sum;
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+        }
+        #papir {
+            background-color: steelblue;
+        }
+        #papir circle {
+            fill: transparent;
+            stroke: white;
+            transform-origin: center center;
+            opacity: 0.3;
+            transition: 1s;
+        }
+        #papir circle:hover {
+            transform: scale(1.2);
+            fill: cyan;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <svg id="papir" width="500" height="300">
+        <circle r="30" cx="50" cy="50"></circle>
+    </svg>
+
+    <script>
+
+        var papir = document.getElementById("papir");
+        var bredde = innerWidth;
+        var hoyde = innerHeight;
+
+        papir.style.width = bredde + "px";
+        papir.style.height = hoyde + "px";
+
+        var i = 400; // antall sirkler
+        while(i > 10) {
+            var x = Math.random() * bredde;
+            var y = Math.random() * hoyde;
+            var r = Math.random() * i;
+
+            papir.innerHTML += `<circle cx="${x}" cy="${y}" r="${r}"></circle>`
+
+            i--
+        }
+
+    </script>
+
+</body>
+</html>

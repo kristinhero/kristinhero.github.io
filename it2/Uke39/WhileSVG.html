@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVG-sirkler</title>
+    <style>
+
+        svg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        circle {
+            fill: lightgreen;
+            stroke: gray;
+            stroke-width: 1;
+            transform-origin: center center ;
+        }
+        circle:hover {
+            fill: yellow;
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <svg id="papir" width="600" height="600">
+
+        <circle r="200" cx="300" cy="300"></circle>
+
+    </svg>
+
+    <script>
+
+        var papir = document.getElementById("papir");
+        var radius = 250;
+
+        while(radius > 0) {
+            papir.innerHTML += `<circle r="${radius}" cx="300" cy="300"></circle>`;
+            radius = radius - 5;
+        }
+
+    </script>
+
+</body>
+</html>

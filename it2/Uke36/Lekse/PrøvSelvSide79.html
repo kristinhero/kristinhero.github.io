@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.css"/>
+    <title>Prank</title>
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="tall"></h1>
+    <p id="respons"></p>
+    <img id="premie" src=""/>
+    <h2 id="advarsel"></h2>
+    <img id="katt" src=""/>
+    <script>
+        var tall = document.getElementById("tall");
+        var dittall = prompt("Si et tall.");
+
+        if (dittall >= 100) {
+            tall.innerHTML = "Ditt tall er høyt";
+        } else
+        {
+            tall.innerHTML = "Ditt tall er lavt";
+        }
+
+
+        var respons = document.getElementById("respons");
+        var premie = document.getElementById("premie");
+        var hovedstad = prompt("Hva er hovedstaden i Albania?");
+
+        if (hovedstad === "Tirana") {
+            respons.innerHTML = "Du svarte riktig!";
+            premie.src = "bilder/pokal.gif";
+        } else
+        {
+            respons.innerHTML = "Du svarte feil!";
+            premie.src = "bilder/narr.png"
+        }
+
+
+        var tall4 = "4";
+        if(tall4 === 4){
+            document.write("sann");
+        }
+
+
+        var advarsel = document.getElementById("advarsel");
+        var katt = document.getElementById("katt");
+        var ukedag = prompt("Hvilken dag er det i dag?");
+        var dato = prompt("Hvilken dato er det i dag?");
+
+        if (ukedag === "fredag" && dato == 13) {
+            advarsel.innerHTML = "Pass på! I dag er det fredag den 13.";
+            katt.src = "bilder/13.jpg";
+        } else if (ukedag === "fredag") {
+            advarsel.innerHTML = "Endelig helg!";
+            katt.src = "bilder/smiley.png";
+        } else {
+            advarsel.innerHTML = "Ha en god dag!";
+            katt.src = "bilder/smiley.png";
+        }
+    </script>
+
+</body>
+</html>

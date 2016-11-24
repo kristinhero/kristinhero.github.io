@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVG og polygoner</title>
+    <style>
+        #papir {
+            background-color: darkblue;
+        }
+        #papir polygon {
+            fill: transparent;
+            stroke: cyan;
+        }
+        #papir polygon:hover {
+            fill: bisque;
+        }
+    </style>
+</head>
+<body>
+
+    <svg id="papir" width="500" height="500">
+
+        <polygon points="20,20 80,20 60,200"></polygon>
+
+    </svg>
+
+    <script>
+
+        var papir = document.getElementById("papir");
+
+        for(var i=1; i <= 500; i+=20) {
+            var punkter = `${Math.random() * i}, ${Math.random() * i}`;
+            punkter += `${Math.random() * i}, ${Math.random() * i}`;
+            punkter += `${Math.random() * i}, ${Math.random() * i}`;
+
+            papir.innerHTML += `<polygon points="${punkter}"></polygon>`;
+        }
+
+    </script>
+
+</body>
+</html>

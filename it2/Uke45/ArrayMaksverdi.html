@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        var tallene = [2, 3, 2343, 1, 7, 34, 5, 3, 2];
+
+        // sortere med minste først
+        tallene.sort(function(a, b){
+            return a - b;
+        });
+
+        // sortere med største først
+        tallene.sort(function (a, b) {
+            return b - a;
+        });
+
+        // Finne topp tre
+        tallene.splice(3, tallene.length - 3);
+
+        console.log(tallene);
+
+    </script>
+
+</body>
+</html>

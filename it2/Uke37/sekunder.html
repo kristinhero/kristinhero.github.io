@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <h1 id="visSek"></h1>
+    <p id="visMin"></p>
+    <p id="visTimer"></p>
+
+    <script>
+
+        var visSek = document.getElementById("visSek");
+        var visMin = document.getElementById("visMin");
+        var visTimer = document.getElementById("visTimer");
+
+        var sekunder = prompt("Oppgi antall sekunder");
+        sekunder = Number(sekunder);
+        var minutter = sekunder / 60;
+        var timer = minutter / 60;
+
+        visSek.innerHTML = `${sekunder} sekunder tilsvarer`;
+        visMin.innerHTML = `${minutter.toFixed(1)} minutter`;
+        visTimer.innerHTML = `${timer.toFixed(1)} timer`;
+
+    </script>
+
+</body>
+</html>

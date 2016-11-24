@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kalkulator</title>
+</head>
+<body>
+
+    <input type="text" id="skjerm"/>
+    <br/>
+
+    <button id="b1">1</button>
+    <button id="b2">2</button>
+    <button id="b3">3</button>
+    <button id="pluss">+</button>
+    <button id="lik">=</button>
+
+    <script>
+
+        var skjerm = document.getElementById("skjerm");
+        var b1 = document.getElementById("b1");
+        var b2 = document.getElementById("b2");
+        var b3 = document.getElementById("b3");
+        var pluss = document.getElementById("pluss");
+        var lik = document.getElementById("lik");
+
+        function regnUt() {
+            var regnestykke = skjerm.value;
+            var svar = eval(regnestykke); //OBS! skummelt
+            skjerm.value = svar;
+        }
+
+        function skrivTegn() {
+            skjerm.value += this.innerHTML;
+        }
+
+        b1.onclick = skrivTegn;
+        b2.onclick = skrivTegn;
+        b3.onclick = skrivTegn;
+        pluss.onclick = skrivTegn;
+        lik.onclick = regnUt;
+
+    </script>
+
+</body>
+</html>

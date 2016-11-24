@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style>
+        #teksten {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hvordan finner jeg ting?</h1>
+    <p id="teksten">For eksempel denne teksten?</p>
+    <div>div 1</div>
+    <div>div 2</div>
+    <div>div 3</div>
+
+    <script>
+        document.getElementById("teksten").innerHTML = "Ny tekst";
+        document.querySelector("#teksten").innerHTML = "Enda en ny tekst";
+        //document.querySelectorAll("p"); Alle p-elementer
+
+       // document.querySelector("div").innerHTML = "denne er endret";
+    </script>
+
+</body>
+</html>

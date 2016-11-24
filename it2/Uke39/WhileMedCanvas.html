@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas og while</title>
+</head>
+<body>
+
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script>
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "Blue";
+
+        var x = 1;
+        while(x < 400) {
+
+            ctx.strokeStyle = "blue";
+            if(x % 2 === 0) {
+                ctx.strokeStyle = "red";
+            }
+
+            ctx.beginPath();
+                ctx.moveTo(0, 400);
+                ctx.lineTo(200, x);
+                ctx.lineTo(400, 400);
+            ctx.closePath();
+            ctx.stroke();
+
+            x += 5;
+        }
+
+    </script>
+
+</body>
+</html>

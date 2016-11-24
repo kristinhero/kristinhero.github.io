@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sinuskurve SVG</title>
+    <style>
+        svg {
+            background-color: lightcoral;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #papir circle {
+            fill: indigo;
+        }
+    </style>
+</head>
+<body>
+
+    <svg id="papir" height="600" width="800"></svg>
+
+    <script>
+
+        var papir = document.getElementById("papir");
+
+        for(var i = 1; i <= 800; i += 1) {
+            var x = Math.sin(Math.PI * i / 180);
+            papir.innerHTML += `<circle r="5" cx="${i}" cy="${300 + x * 100}"></circle>`;
+        }
+
+    </script>
+
+</body>
+</html>

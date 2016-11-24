@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.css"/>
+    <title>Solsikker</title>
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+        img {
+            width: 70%;
+        }
+
+        div {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1>Heisann</h1>
+    <p>Jeg elsker blomster.</p>
+    <p>Ingenting skjer på oppgave 3.</p>
+    <img src="solsikke.jpg" id="solsikke" alt="Solsikke"/>
+
+    <div id="div1">Solsikke er en plante som kan bli over fire meter høy. Stengelen er kraftig og ruhåret, og med en opprett vekst. Blomstene er store, og kan bestå av inntil 40 cm brede blomsterkurver med gule, brune eller rødaktige blad. Solsikke er relativt lettdyrket, men krever at visse vekstvilkår er oppfylt for å utvikles maksimalt. Den trives best med full sol og varm temperatur (helst over 20°C). Solsikken er en grådig plante som krever mye vann og næring.</div>
+    <div id="div2">Solsikker er populære som hagevekster. I tillegg til å være dekorative, er de lette å dyrke og hardføre mot sykdommer og skadedyrangrep. Det foregår en omfattende utvikling av nye sorter, hvilket gir hageentusiaster flere solsikkevarianter å velge i mellom.
+        Solsikker er også etterspurte som snittblomster og selges som avskåret i de fleste blomsterbutikker.</div>
+
+    <script>
+        
+        document.querySelector("p").innerHTML = "Jeg hater blomster.";
+        document.getElementById("solsikke").src = "solsikkehat.jpg";
+        document.getElementById("div2").innerHTML = document.getElementById("div1").innerHTML;
+        
+    </script>
+
+</body>
+</html>

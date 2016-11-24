@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.css"/>
+    <title>Firkanter</title>
+    <style>
+        
+        body {
+            margin-left: 20px;
+        }
+
+        #firkant {
+            width: 20px;
+            height: 20px;
+            margin: 10px auto;
+            background-color: lightcyan;
+            transition: 1s;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 15px;
+        }
+
+        #big {
+            margin-right: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Lag din egen firkant</h1>
+
+    <form>
+        <label>Farge på engelsk</label>
+        <input id="inpFarge" type="text"/>
+        <label>Bredde</label>
+        <input id="inpBredde" type="number"/>
+        <label>Høyde</label>
+        <input id="inpHoyde" type="number"/>
+    </form>
+
+    <div id="firkant"> </div>
+
+    <h2 id="endre1">Endre størrelsen på denne teksten</h2>
+
+    <p id="endre2">En firkant er et polygon med fire sidekanter.
+        I matematikk brukes også synonymene kvadrilateral og kvadrangel eller, mindre vanlig, tetragon.
+        Sidekantene møtes i de fire hjørnene. Et linjestykke mellom to hjørner som ikke er en sidekant kalles en diagonal.
+        I en såkalt enkel firkant vil ingen av sidekantene krysse hverandre,
+        og summen av de innvendige vinklene vil være 360°.
+        Omkretsen av firkanten er lik summen av de fire sidelengdene.
+        Firkanter kan videre klassifiseres i en rekke undergrupper, som parallellogram, rektangel, kvadrat og rombe.
+        Navnet «kvadrilateral» har opphav i latin, som en sammensetning av «quadri» = fire og «latus» = side.
+        Den greske formen «tetragon» betyr fire vinkler.</p>
+
+    <button class="button" id="big">Større</button>
+    <button class="button" id="small">Mindre</button>
+
+    <script>
+
+        var firkant = document.getElementById("firkant");
+        var inpFarge = document.getElementById("inpFarge");
+        var inpBredde = document.getElementById("inpBredde");
+        var inpHoyde = document.getElementById("inpHoyde");
+
+        inpFarge.oninput = function() {
+            firkant.style.backgroundColor = inpFarge.value;
+        };
+        inpBredde.oninput = function() {
+            firkant.style.width = inpBredde.value + "px";
+        };
+        inpHoyde.oninput = function() {
+            firkant.style.height = inpHoyde.value + "px";
+        };
+
+        var big = document.getElementById("big");
+        var small = document.getElementById("small");
+        var endre1 = document.getElementById("endre1");
+        var endre2 = document.getElementById("endre2");
+
+        big.onclick = function() {
+            endre1.style.fontSize = 60 + "px";
+            endre2.style.fontSize = 30 + "px";
+        };
+        small.onclick = function() {
+            endre1.style.fontSize = 15 + "px";
+            endre2.style.fontSize = 8 + "px";
+        };
+
+    </script>
+
+</body>
+</html>

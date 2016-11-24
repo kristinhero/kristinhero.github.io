@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lottotrekning med while</title>
+</head>
+<body>
+
+    <h1 id="overskrift"></h1>
+
+    <script>
+        var overskrift = document.getElementById("overskrift");
+        var i = 0;
+
+        while(i < 1) {
+            var vinner = Math.floor(Math.random() * 10 + 1);
+            if(vinner !== 10) {
+                overskrift.innerHTML = "Du vant ikke!";
+            } else {
+                overskrift.innerHTML = "Du har vunnet!"
+            }
+            i++;
+        }
+
+    </script>
+
+</body>
+</html>

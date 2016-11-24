@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Onmousemove</title>
+    <style>
+        img {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h1 id="overskriften">Velkommen</h1>
+    <img id="bildet" src="blomst.jpg" width="400"/>
+    <button id="knappen">Knapp</button>
+</div>
+    <div id="visTekst"></div>
+
+<script>
+
+    let visTekst = document.getElementById("visTekst");
+    let objekter = document.querySelectorAll("#container > *");
+
+    function visInfo() {
+        visTekst.innerHTML = "Du har musen over " + this.id;
+    }
+
+    for (let objekt of objekter){
+        objekt.onmouseover = visInfo;
+    }
+
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

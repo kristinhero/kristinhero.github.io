@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>While og sirkler</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        svg {
+            background-color: lightcoral;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        circle {
+            fill: indigo;
+            stroke: white;
+        }
+    </style>
+</head>
+<body>
+
+    <svg id="papir" width="800" height="600"></svg>
+
+    <script>
+
+        var papir = document.getElementById("papir");
+        i = 1;
+
+        while(i < 200){
+            papir.innerHTML += `<circle r="${80 * Math.random()}" cx="${Math.random() * 800}" cy="${Math.random() * 600}"></circle>`;
+
+            i++;
+        }
+
+
+    </script>
+
+</body>
+</html>

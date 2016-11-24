@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <h1 id="overskrift"></h1>
+
+    <script>
+
+        var overskrift = document.getElementById("overskrift");
+        var rovdyr = prompt("Si et norskt rovdyr");
+
+        switch(rovdyr.toLowerCase()){
+            case"ulv":
+                overskrift.innerHTML = "Det er 33 ulver i Norge";
+                break;
+            case"jerv":
+                overskrift.innerHTML = "Det er 343 jerv i Norge";
+                break;
+            case"bjørn":
+                overskrift.innerHTML = "Det er 137 bjørner i Norge";
+                break;
+            case"gaupe":
+                overskrift.innerHTML = "Det er 350 gauper i Norge";
+                break;
+            default:
+                overskrift.innerHTML = "Beklager, vi har ingen informasjon på dette dyret."
+        }
+
+    </script>
+
+</body>
+</html>

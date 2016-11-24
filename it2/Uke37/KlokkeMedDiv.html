@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Klokka</title>
+    <style>
+        #urskive {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: olive;
+            border-radius: 50%;
+        }
+
+        #urskive > * {
+            position: absolute;
+            background-color: antiquewhite;
+            bottom: 200px;
+            transform-origin: center bottom;
+        }
+        #sekundviser {
+            height: 180px;
+            width: 2px;
+            left: 199px;
+        }
+        #minuttviser {
+            height: 180px;
+            width: 4px;
+            left: 198px;
+        }
+        #timeviser {
+            height: 180px;
+            width: 6px;
+            left: 197px;
+        }
+        #midt {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            bottom: 195px;
+            left: 195px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="urskive">
+
+        <div id="timeviser"></div>
+        <div id="minuttviser"></div>
+        <div id="sekundviser"></div>
+        <div id="midt"></div>
+
+    </div>
+
+    <script>
+
+        var timeviser = document.getElementById("timeviser");
+        var minuttviser = document.getElementById("minuttviser");
+        var sekundviser = document.getElementById("sekundviser");
+
+        function visTid() {
+            var dato = new Date();
+            var dag = dato.getDate();
+            var timer = dato.getHours();
+            var minutter = dato.getMinutes();
+            var sekunder = dato.getSeconds();
+            var millisekunder = dato.getMilliseconds();
+
+            sekundviser.style.transform = `rotate(${sekunder * 6 + millisekunder * 0.006}deg)`;
+            minuttviser.style.transform = `rotate(${minutter * 6 + sekunder * 0.1}deg)`;
+
+            if (timer <= 12) {
+                timeviser.style.transform = `rotate(${timer * 30 + minutter * 0.5}deg)`;
+            } else {
+                timeviser.style.transform = `rotate(${timer * 15 + minutter * 0.25}deg)`;
+            }
+        }
+        visTid();
+        setInterval(visTid, 20);
+
+    </script>
+
+</body>
+</html>

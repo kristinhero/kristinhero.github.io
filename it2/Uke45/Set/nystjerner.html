@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stjerner</title>
+</head>
+<body>
+
+    <script>
+
+        var stjerner = ["Sirius", "Vega", "Pollux", "Sola"];
+
+        //Gjøre om stjerner til et set
+        var mineStjerner = new Set(stjerner);
+
+        console.log(mineStjerner.has("Vega"));
+
+        // Vise alle stjerner
+
+        for(var stjerne of mineStjerner) {
+            console.log(stjerne);
+        }
+
+    </script>
+
+</body>
+</html>

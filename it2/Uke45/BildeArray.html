@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bilder</title>
+</head>
+<body>
+
+    <img id="bilde" src="img01.jpg"/>
+
+    <script>
+
+        var bilde = document.getElementById("bilde");
+
+        var bilder = [
+            "img01.jpg",
+            "img02.jpg",
+            "img03.jpg",
+            "img04.jpg"
+        ];
+        
+        var indeks = 0;
+        bilde.onclick = function() {
+            indeks++; //Øker indeks med 1
+
+            if (indeks >= bilder.length) {
+                indeks = 0;
+            }
+
+            var mittBilde = bilder[indeks];
+            bilde.src = mittBilde;
+        }
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feriebilder</title>
+    <style>
+        body {
+            width: 70%;
+            margin: auto;
+        }
+        #bilde {
+            width: 800px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="bilde" src=""/>
+    <button id="frem">Frem</button>
+    <button id="tilbake">Tilbake</button>
+
+    <ul id="visSrc"></ul>
+
+    <script>
+
+        var bilde = document.getElementById("bilde");
+        var frem = document.getElementById("frem");
+        var tilbake = document.getElementById("tilbake");
+        var visSrc = document.getElementById("visSrc");
+
+        var feriebilder = ["bar.jpg","barn.jpg","hotell.jpg","surf.jpg"];
+        var i = 0;
+
+        bilde.src = feriebilder[i];
+
+        for(var feriebilde of feriebilder){
+            var li = document.createElement("li");
+            li.innerHTML = feriebilde;
+            visSrc.appendChild(li);
+
+        }
+
+        frem.onclick = function(){
+            i++;
+            if(i >= feriebilder.length){
+                i= 0;
+            }
+            bilde.src = feriebilder[i];
+        };
+        tilbake.onclick = function(){
+            i--;
+            if(i < 0){
+                i = feriebilder.length - 1;
+            }
+            bilde.src = feriebilder[i];
+        }
+
+
+    </script>
+
+</body>
+</html>

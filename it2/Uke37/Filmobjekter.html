@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.css"/>
+    <title>Filmer</title>
+    <style>
+
+        body {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="button" id="b1">Vis informasjon om Titanic</button>
+    <button class="button" id="b2">Vis informasjon om Suicide Squad</button>
+    <button class="button" id="b3">Vis informasjon om Nerve</button>
+
+    <h1 id="visTittel"></h1>
+    <p id="visRegissor"></p>
+    <p id="visVarighet"></p>
+
+    <script>
+
+        var b1 = document.getElementById("b1");
+        var b2 = document.getElementById("b2");
+        var b3 = document.getElementById("b3");
+        var visTittel = document.getElementById("visTittel");
+        var visRegissor = document.getElementById("visRegissor");
+        var visVarighet = document.getElementById("visVarighet");
+
+        var titanic = {
+            tittel : "Titanic",
+            regissor : "James Cameron",
+            varighet : "194 minutter"
+        };
+        var suicideSquad = {
+            tittel : "Suicide squad",
+            regissor : "David Ayer",
+            varighet : "123 minutter"
+        };
+        var nerve = {
+            tittel : "Nerve",
+            regissor : "Henry Joost",
+            varighet : "96 minutter"
+        };
+
+        b1.onclick = function(evt) {
+            visTittel.innerHTML = titanic.tittel;
+            visRegissor.innerHTML = "Regissør: " + titanic.regissor;
+            visVarighet.innerHTML = "Varighet: " + titanic.varighet;
+        };
+        b2.onclick = function(evt) {
+            visTittel.innerHTML = suicideSquad.tittel;
+            visRegissor.innerHTML = "Regissør: " + suicideSquad.regissor;
+            visVarighet.innerHTML = "Varighet: " + suicideSquad.varighet;
+        };
+        b3.onclick = function(evt) {
+            visTittel.innerHTML = nerve.tittel;
+            visRegissor.innerHTML = "Regissør: " + nerve.regissor;
+            visVarighet.innerHTML = "Varighet: " + nerve.varighet;
+        };
+
+    </script>
+
+</body>
+</html>

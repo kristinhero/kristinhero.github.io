@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.css"/>
+    <title>Tall og ting</title>
+    <style>
+
+        body {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Firkanten</h1>
+
+    <script>
+
+        var hoyde = 2;
+        var bredde = 5;
+
+        hoyde = Number(hoyde);
+        bredde = Number(bredde);
+
+        var areal = hoyde * bredde;
+        var omkrets = 2*(hoyde + bredde);
+
+        document.write("<p>Arealet er " + areal + "</p>"); //her kan man også bruke ``
+        document.write("Omkretsen er " + omkrets);/*Kommentar*/
+
+        var tall6 = Math.random() * 5 + 1;
+        var tall10 = Math.random() * 10;
+        var tall20 = Math.random() * 10 + 10;
+
+        document.write(`<h2>Tall</h2>
+        <p>${tall6.toFixed(0)}</p>
+        <p>${tall10.toFixed(3)}</p>
+        <p>${tall20.toFixed(3)}</p>`);
+
+        var radius = prompt("Hva er radien til kula?");
+
+        var ko = 2 * Math.PI * radius; //Kulas omkrets
+        var kv = 4/3 * Math.PI * Math.pow(radius, 3); //Kulas volum
+        var ka = 4 * Math.PI * Math.pow(radius, 2); /*Kulas areal*/
+
+        document.write(`<h3>Kula</h3>
+        <p>Kulas omkrets er ${ko.toFixed(1)}</p>
+        <p>Kulas volum er ${kv.toFixed(1)}</p>
+        <p>Kulas areal er ${ka.toFixed(1)}</p>`);
+
+        var totalt = prompt("Hvor mange poeng var det mulig å få totalt på prøven?");
+        var score = prompt("Hvor mange poeng fikk du?");
+
+        var prosent = score/totalt;
+        var karakter = prosent * 6;
+
+        document.write(`<h4>Karakter</h4>
+        <p>Din karakter er ${karakter.toFixed(0)}</p>`);
+
+        var dinhoyde = prompt("Hva er din høyde i meter(desimaler med punktum)?");
+        var vekt = prompt("Hva er din vekt i kilogram?");
+
+        var KMI = vekt/(Math.pow(dinhoyde, 2));
+
+        document.write(`<h5>Kroppsmasseindeks</h5>
+        <p>Din KMI er ${KMI.toFixed(1)}</p>`);
+
+    </script>
+
+</body>
+</html>

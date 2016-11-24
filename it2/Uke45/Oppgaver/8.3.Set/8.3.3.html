@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <input id="inpFarge" type="text" placeholder="Farge"/>
+    <button id="btn">Send in</button>
+
+    <ul id="visFarger"></ul>
+
+    <script>
+
+        var inpFarge = document.getElementById("inpFarge");
+        var btn = document.getElementById("btn");
+        var visFarger = document.getElementById("visFarger");
+
+        var farger = new Set();
+
+        btn.onclick = function(evt){
+            evt.preventDefault();
+            farger.add(inpFarge.value);
+            console.log(farger);
+            lagliste();
+            inpFarge.value = "";
+        };
+        //registrerer du den samme fargen to ganger, vil den ikke vises i settet. hver verdi er unik
+
+        function lagliste(){
+            visFarger.innerHTML = "";
+            for(var farge of farger){
+                var li = document.createElement("li");
+                li.innerHTML = farge;
+                li.style.color = farge;
+                visFarger.appendChild(li);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

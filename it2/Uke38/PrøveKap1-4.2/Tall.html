@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tall og svar</title>
+    <style>
+
+        body {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 id="svar"></h1>
+
+    <script>
+
+        var svar = document.getElementById("svar");
+        var tall1 = prompt("Si et tall");
+        var tall2 = prompt("Si et tall til");
+        tall1 = Number(tall1);
+        tall2 = Number(tall2);
+
+        var sum = tall1 + tall2;
+        var differanse = Math.abs(tall1 - tall2);
+        var rot = Math.sqrt(sum);
+
+        var sjekk = false;
+
+
+        if (sum === 13) {
+            svar.innerHTML += "I dag har du uflaks! <br>";
+            sjekk = true;
+        }
+        if (differanse > 10) {
+            svar.innerHTML += "Dere er langt fra hverandre! <br>";
+            sjekk = true;
+        }
+        if (rot === 3) {
+            svar.innerHTML += "Summen er 9 <br>";
+            sjekk = true;
+        }
+        if (tall1 < 0 && tall2 > 0) {
+            svar.innerHTML += "AC/DC <br>";
+            sjekk = true;
+        }
+        if (!sum) {
+            svar.innerHTML += "Din luring! Du skulle skrive inn to tall. <br>";
+            sjekk = true;
+        }
+        if (!sjekk) {
+            svar.innerHTML = "Prøv igjen! <br>"
+        }
+
+    </script>
+
+</body>
+</html>

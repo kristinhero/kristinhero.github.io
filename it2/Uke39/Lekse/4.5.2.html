@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>For med tall</title>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+        #papir {
+            background-color: lightcoral;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="papir" height="400" width="400"></canvas>
+
+    <script>
+        var tallA = 0;
+        var tallB = 1;
+        var tallF = tallA + tallB;
+
+        document.write(tallB + "<br>");
+        document.write(tallF + "<br>");
+
+        for(var i = 0; i < 8; i++){
+            tallA = tallB;
+            tallB = tallF;
+            tallF  = tallA + tallB;
+            document.write(tallF + "<br>")
+        }
+
+        var papir = document.getElementById("papir");
+        var ctx = papir.getContext("2d");
+
+        for(var y = 100; y > 0; y-= 10){
+            ctx.fillStyle = "indigo";
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 2;
+            ctx.fillRect(200 - y, 200 - y, y, y);
+            ctx.beginPath();
+            ctx.moveTo(200 - y, 200 - y);
+            ctx.lineTo(200 + y, 200 - y);
+            ctx.lineTo(200 + y, 200 + y);
+            ctx.lineTo(200 - y, 200 + y);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+
+        for(var x = 15; x < 400; x+= 40) {
+            ctx.strokeStyle = "black";
+            ctx.beginPath();
+            ctx.moveTo(0, x);
+            ctx.lineTo(400, x);
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+    </script>
+
+</body>
+</html>

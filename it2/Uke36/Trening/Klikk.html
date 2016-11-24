@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <script>
+
+        document.onclick = function(evt) {
+            var x = evt.clientX;
+            var y = evt.clientY;
+
+            if(x > 800 && y > 400) {
+                document.body.style.background = "black";
+            } else {
+                document.body.style.background = "green";
+            }
+        };
+
+    </script>
+
+</body>
+</html>

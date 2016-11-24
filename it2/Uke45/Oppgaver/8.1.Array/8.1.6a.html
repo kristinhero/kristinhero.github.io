@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pushe array</title>
+</head>
+<body>
+
+    <input id="inpBy" type="text"/>
+    <button id="btn">Send inn</button>
+    <ul id="visByer"></ul>
+
+    <script>
+
+        var inpBy = document.getElementById("inpBy");
+        var btn = document.getElementById("btn");
+        var visByer = document.getElementById("visByer");
+        var byer = [];
+
+        function lagListe() {
+            visByer.innerHTML = "";
+
+            for(var by of byer) {
+                var nyby = document.createElement("li");
+                nyby.innerHTML = by;
+                visByer.appendChild(nyby);
+            }
+
+            inpBy.value = "";
+            inpBy.focus();
+
+        }
+
+        btn.onclick = function(){
+            byer.push(inpBy.value);
+            //document.write(byer);
+            lagListe();
+        };
+
+    </script>
+
+</body>
+</html>

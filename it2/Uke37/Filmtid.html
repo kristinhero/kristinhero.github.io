@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+
+    <p id="visTid"></p>
+
+    <script>
+
+        var visTid = document.getElementById("visTid");
+        var antFilmer = prompt("Omtrent hvor mange filmer har du sett i år?");
+        var filmTid = prompt("Hva er gjennomsnittstiden på disse filmene (i timer)?");
+
+        antFilmer = Number(antFilmer);
+        filmTid = Number(filmTid);
+        var totalt = antFilmer * filmTid;
+        visTid.innerHTML = `Du har brukt ${totalt} timer på å se på film hittil i år.`;
+
+    </script>
+
+</body>
+</html>
