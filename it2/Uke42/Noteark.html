@@ -141,10 +141,8 @@
             for(var i = 0; i < spillnoter.length; i++){
                 var frekvens = spillnoter[i];
                 var osc = ac.createOscillator();
-                var gain = ac.createGain();
-                osc.connect(ac.destination + gain);
+                osc.connect(ac.destination);
                 osc.frequency.value = frekvens;
-                gain.gain.setValueAtTime(i, ac.currentTime);
                 osc.start(ac.currentTime + i);
                 osc.stop(ac.currentTime + i + 0.8);
             }
