@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tall</title>
+</head>
+<body>
+    <button id="btnSum">Vis summen av alle tallene</button>
+    <button id="btnNgtv">Vis antall negative tall i arrayet</button>
+    <button id="btnSnitt">Vis gjennomsnittet av alle tallene</button>
+    <button id="btnMinst">Vis det minste tallet</button>
+    <button id="btnPar">Vis summen av partallene</button>
+    <div id="visArray"></div>
+    <script>
+        var btnSum = document.getElementById("btnSum");
+        var btnNgtv = document.getElementById("btnNgtv");
+        var btnSnitt = document.getElementById("btnSnitt");
+        var btnMinst = document.getElementById("btnMinst");
+        var btnPar = document.getElementById("btnPar");
+        var visArray = document.getElementById("visArray");
+
+        var tallene = [34,53,2,3,34,26,26,85,3,4,98,2,12];
+
+        btnSum.onclick = function () {
+            var sum = 0;
+            for(var tall of tallene){
+                sum+= tall;
+            }
+            visArray.innerHTML = "Summen er " + sum;
+        };
+        btnNgtv.onclick = function () {
+            var sum = 0;
+            for(var tall of tallene){
+                if(tall < 0){
+                    sum += tall;
+                }
+            }
+            visArray.innerHTML = "Antall negative tall er " + sum;
+        };
+        btnSnitt.onclick = function () {
+            var sum = 0;
+            for(var tall of tallene){
+                sum+= tall;
+            }
+            var snitt = sum/tallene.length;
+            visArray.innerHTML = "Gjennomsnittet av tallene er " + snitt.toFixed(0);
+        };
+        btnMinst.onclick = function () {
+            var min = Infinity;
+            for(var tall of tallene){
+                if(tall<min){
+                    min = tall;
+                }
+            }
+            visArray.innerHTML = "Det minste tallet er " + min;
+        };
+        btnPar.onclick = function () {
+            var sum = 0;
+            for(var tall of tallene){
+                if(tall%2 === 0){
+                    sum += tall;
+                }
+            }
+            visArray.innerHTML = "Summen av partallene er " + sum;
+        };
+    </script>
+
+</body>
+</html>

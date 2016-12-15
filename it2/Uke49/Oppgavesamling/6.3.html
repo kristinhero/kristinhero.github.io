@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tall</title>
+</head>
+<body>
+    <button id="btnAlle">Vis alle tallene</button>
+    <button id="btnBaklengs">Vis tallene baklengs</button>
+    <button id="btn2">Vis annethvert tall</button>
+    <button id="btn10">Vis tall under 10</button>
+    <button id="btnPar">Vis partall</button>
+    <div id="visArray"></div>
+    <script>
+        var btnAlle = document.getElementById("btnAlle");
+        var btnBaklengs = document.getElementById("btnBaklengs");
+        var btn2 = document.getElementById("btn2");
+        var btn10 = document.getElementById("btn10");
+        var btnPar = document.getElementById("btnPar");
+        var visArray = document.getElementById("visArray");
+
+        var tallene = [34,53,2,3,34,26,26,85,3,4,98,2,12];
+
+        btnAlle.onclick = function () {
+            visArray.innerHTML = tallene.join(", ");
+        };
+        btnBaklengs.onclick = function () {
+            tallene.reverse();
+            visArray.innerHTML = tallene.join(", ");
+            tallene.reverse();
+        };
+        btn2.onclick = function () {
+            visArray.innerHTML = "";
+            for(var i=0; i<tallene.length; i+=2){
+                visArray.innerHTML += tallene[i] + ", ";
+            }
+        };
+        btn10.onclick = function () {
+            visArray.innerHTML = "";
+            for(var tall of tallene){
+                if(tall < 10){
+                    visArray.innerHTML += tall + ", ";
+                }
+            }
+        };
+        btnPar.onclick = function () {
+            visArray.innerHTML = "";
+            for(var tall of tallene){
+                if(tall%2 === 0){
+                    visArray.innerHTML += tall + ", ";
+                }
+            }
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Samme tall</title>
+</head>
+<body>
+
+    <script>
+        var tallene = [4,5,3,6,1,2,0,9,8,2,4,7,3];
+        var tallkopi = tallene.slice();
+        for(var i=0; i<=tallkopi.length; i++){
+            for(var y=i; y<tallkopi.length; y++){
+                if(i != y && tallkopi[i]== tallkopi[y]){
+                    tallkopi.splice(tallkopi[y],1);
+                }
+            }
+        }
+        /*for(var tall of tallkopi){
+            for(var i=tall.index+1; i<tallkopi.length; i++){
+                if(tall === tallkopi[i]){
+                    console.log(tall + "og" + tallkopi[i]);
+                }
+            }
+        }*/
+        console.log(tallene);
+        console.log(tallkopi);
+    </script>
+
+</body>
+</html>
