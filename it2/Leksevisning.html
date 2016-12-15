@@ -9,12 +9,13 @@
             width: 60%;
             margin: 20px auto 0 auto;
         }
-
-        button > a {
-            color: white;
+        #container {
+            width: 100%;
+            display: flex;
         }
-        button > a:hover {
-            color: white;
+        #container > a {
+            flex-grow: 1;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -44,10 +45,7 @@
 
         function visLinker(snapshot) {
             let oppgave = snapshot.val();
-            let knapp = document.createElement("button");
-            knapp.innerHTML = `<a href="${oppgave.link}">${oppgave.navn}</a>`;
-            knapp.className = "button";
-            container.appendChild(knapp);
+            container.innerHTML += `<a href="${oppgave.link}" class="button">${oppgave.navn}</a>`;
         }
         uke49.on("child_added",visLinker);
 
