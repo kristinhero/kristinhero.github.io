@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Stock</title>
+    <style>
+        #chart {
+            border: 1px solid lightgray;
+            display: block;
+            position: relative;
+            margin: auto;
+        }
+        #ruter {
+            stroke: lightgray;
+        }
+        line:hover {
+            stroke: slateblue;
+        }
+        #graf {
+            stroke: slateblue;
+            stroke-width: 2;
+            fill: none;
+        }
+    </style>
+</head>
+<body>
+
+    <svg id="chart" width="900" height="400">
+        <g id="ruter"></g>
+        <polyline id="graf" points=""></polyline>
+    </svg>
+
+    <script>
+        let chart = document.getElementById("chart");
+        let ruter = document.getElementById("ruter");
+        let graf = document.getElementById("graf");
+
+        let punkter = "";
+        let xpos = 0;
+        let skyvTilVenstre = 20;
+
+        function tegnGraf() {
+            punkter += `${xpos}, ${Math.random()*400} `;
+            graf.setAttribute("points",punkter);
+            xpos += 20;
+            if(xpos > 800){
+                graf.style.transform = `translateX(${-skyvTilVenstre}px)`;
+                skyvTilVenstre += 20;
+            }
+        }
+
+        function tegnRuter() {
+            let x = 20;
+            let y = 20;
+            while(x<900){
+                ruter.innerHTML+= `<line x1="${x}" y1="0" x2="${x}" y2="400"></line>`;
+                x+=20;
+            }
+            while(y<400){
+                ruter.innerHTML+= `<line x1="0" y1="${y}" x2="900" y2="${y}"></line>`;
+                y+=20;
+            }
+        }
+        tegnRuter();
+        setInterval(tegnGraf, 100);
+
+    </script>
+
+</body>
+</html>

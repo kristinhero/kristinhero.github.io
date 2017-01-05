@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex Chart</title>
+    <style>
+        #chart {
+            display: flex;
+            width: 800px;
+            height: 400px;
+            background-color: aliceblue;
+            filter: drop-shadow(0 0 1px black);
+            margin: auto;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        #chart > div {
+            background-color: cornflowerblue;
+            flex: 1;
+            margin-left: 2px;
+            box-sizing: border-box;
+        }
+        #chart > div:last-child {
+            margin-right: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chart"></div>
+
+    <script>
+        let chart = document.getElementById("chart");
+        let temperaturer = [12, 17, 34, 23, 34, 23, 54, 34, 23, 23, 34, 54];
+
+        let maks = -Infinity;
+        for(let temp of temperaturer){
+            if(temp>maks){
+                maks = temp;
+            }
+        }
+        for(let temp of temperaturer){
+            chart.innerHTML += `<div style="height: ${temp/maks * 90}%"></div>`;
+        }
+    </script>
+
+</body>
+</html>

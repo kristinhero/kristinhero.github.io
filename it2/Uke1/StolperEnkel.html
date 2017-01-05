@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stolpediagram</title>
+    <style>
+        #chart > div {
+            background-color: hotpink;
+            color: white;
+            height: 30px;
+            width: 300px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chart"></div>
+
+    <script>
+        let chart = document.getElementById("chart");
+        let temperaturer = [12, 17, 34, 23, 34, 23, 54, 34, 23, 23, 34, 54];
+
+        for(let temp of temperaturer){
+            let stolpe = document.createElement("div");
+            stolpe.style.width = temp * 10 + "px";
+            //stolpe.style.width = `${temp}px`;
+            chart.appendChild(stolpe);
+
+            stolpe.animate([
+                {width: "10px"},
+                {width: (temp*10) + "px"}
+            ],{
+                duration: 500,
+                easing: "ease-out"
+            });
+        }
+    </script>
+
+</body>
+</html>
