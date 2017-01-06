@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nettlesere sirkeldiagram</title>
+</head>
+<body>
+
+<canvas id="chart" width="300" height="300"></canvas>
+<script>
+    var chart = document.getElementById("chart");
+    var ctx = chart.getContext("2d");
+    var nettlesere = [
+        {navn: "Safari", antall: 7},
+        {navn: "Google Chrome", antall: 19},
+        {navn: "Firefox", antall: 1},
+        {navn: "Opera", antall: 3}
+    ];
+    function graderTilRadianer(grader) {
+        return Math.PI*grader/180;
+    }
+    var total = 0;
+    for(var nettleser of nettlesere){
+        total+= nettleser.antall;
+    }
+    var startvinkel = -90;
+    for(var nettleser of nettlesere){
+        var vinkel = nettleser.antall*360/total;
+        ctx.fillStyle = `hsl(${Math.random()*360}, 100%, 50%)`;
+        ctx.beginPath();
+        ctx.moveTo(150, 150);
+        ctx.arc(150, 150, 140, graderTilRadianer(startvinkel),graderTilRadianer(startvinkel+vinkel));
+        ctx.closePath();
+        ctx.fill();
+        startvinkel+=vinkel;
+    }
+
+</script>
+
+</body>
+</html>

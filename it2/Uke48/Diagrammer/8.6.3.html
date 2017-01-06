@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Middeltemperatur</title>
+    <style>
+        #chart {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <svg id="chart" width="650" height="300">
+        <defs>
+            <marker id="sirkel" markerWidth="6" markerHeight="6" refX="3" refY="3">
+            <circle cx="3" cy="3" r="2" fill="Steelblue"></circle></marker>
+        </defs>
+    </svg>
+    <script>
+        var chart = document.getElementById("chart");
+        var temperaturer = [
+            {mnd: "Januar", tmp: 1.2},
+            {mnd: "Februar", tmp: 1.1},
+            {mnd: "Mars", tmp: 2.8},
+            {mnd: "April", tmp: 5.5},
+            {mnd: "Mai", tmp: 9.9},
+            {mnd: "Juni", tmp: 12.8},
+            {mnd: "Juli", tmp: 14.1},
+            {mnd: "August", tmp: 14.4},
+            {mnd: "September", tmp: 11.7},
+            {mnd: "Oktober", tmp: 8.8},
+            {mnd: "November", tmp: 4.8},
+            {mnd: "Desember", tmp: 2.5}
+        ];
+        for(var i=0; i<5; i++){
+            chart.innerHTML += `<line stroke="LightGray" x1="50" y1="${50*i}"
+            x2="600" y2="${50*i}"></line>`;
+        }
+        for(var i=0; i<12; i++){
+            chart.innerHTML += `<line stroke="LightGray" x1="${50 + i*50}" y1="0"
+            x2="${50 + i*50}" y2="200"></line>`;
+        }
+        temperaturer.forEach(function(element, indeks){
+            chart.innerHTML += `<text font-family="arial" text-anchor="middle"
+            fill="Dark-Gray" font-size="10" x="${50 + indeks*50}" y="220">${element.mnd}</text>`;
+        });
+        function finnMaks(){
+            var maks = -Infinity;
+            for(var temperatur of temperaturer){
+                if(temperatur.tmp>maks){
+                    maks = temperatur.tmp;
+                }
+            }
+            return maks;
+        }
+        var punkter = "";
+        temperaturer.forEach(function (element, indeks) {
+            var maks = finnMaks();
+            var prosent = element.tmp/maks;
+            punkter += `${50 + indeks * 50},${200 - prosent*180} `;
+            console.log(prosent);
+        });
+        chart.innerHTML += `<polyline points="${punkter}" marker-mid="url(#sirkel)"
+        stroke="Steelblue" stroke-width="2" fill="none"></polyline>`
+
+    </script>
+
+</body>
+</html>

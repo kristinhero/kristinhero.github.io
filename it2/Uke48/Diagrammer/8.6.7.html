@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transport Highcharts</title>
+    <style>
+        #container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+    var myChart = new Highcharts.Chart({
+        chart:{
+            renderTo:'container',//id til element hvor diagrammet skal tegnes
+            type:'pie' //Type diagram
+        },
+        title:{
+            text: 'Transportmidler for skoleelever'
+        },
+        series: [{
+            name: 'Antall elever',
+            data: [{
+                name: 'Gå',
+                y: 2
+            },{
+                name: 'Buss',
+                y: 20
+            },{
+                name: 'Trikk',
+                y: 1
+            },{
+                name: 'Sykkel',
+                y: 5
+            },{
+                name: 'Bil',
+                y: 4
+            }]}]
+    })
+</script>
+
+</body>
+</html>

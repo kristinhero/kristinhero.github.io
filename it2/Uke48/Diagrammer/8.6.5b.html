@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atmosfære sirkeldiagram</title>
+</head>
+<body>
+
+    <canvas id="chart" width="300" height="300"></canvas>
+    <script>
+        var chart = document.getElementById("chart");
+        var ctx = chart.getContext("2d");
+        var gasser = [
+            {navn: "Nitrogen", andel: 78.1},
+            {navn: "Oksygen", andel: 20.9},
+            {navn: "Argon", andel: 0.9},
+            {navn: "Karbondioksid", andel: 0.038}
+        ];
+        function graderTilRadianer(grader) {
+            return Math.PI*grader/180;
+        }
+        var startvinkel = -90;
+        for(var gass of gasser){
+            var vinkel = gass.andel*360/100;
+            ctx.fillStyle = `hsl(${Math.random()*360}, 100%, 50%)`;
+            ctx.beginPath();
+            ctx.moveTo(150, 150);
+            ctx.arc(150, 150, 140, graderTilRadianer(startvinkel),graderTilRadianer(startvinkel+vinkel));
+            ctx.closePath();
+            ctx.fill();
+            startvinkel+=vinkel;
+        }
+
+    </script>
+
+</body>
+</html>

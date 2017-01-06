@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aksjekurs Highcharts</title>
+    <style>
+        #container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script>
+        var myChart = new Highcharts.Chart({
+            chart:{
+                renderTo:'container',//id til element hvor diagrammet skal tegnes
+                type:'line' //Type diagram
+            },
+            title:{
+                text: 'Aksjekurs Vår 2016'
+            },
+            xAxis:{
+                categories: ['Januar','Februar','Mars','April','Mai','Juni','Juli'] //kategorier på x-aksen
+            },
+            yAxis:{
+                title:{
+                    text:'Aksjeverdi'
+                }
+            },
+            series: [{
+                type: 'line',
+                name: 'Aksjeverdi',
+                data: [100, 20, 70, 150, 140, 20, 40]
+            }]
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kjæledyr sirkeldiagram</title>
+</head>
+<body>
+
+    <canvas id="chart" width="300" height="300"></canvas>
+    <script>
+        var chart = document.getElementById("chart");
+        var ctx = chart.getContext("2d");
+        var kjeledyrene = [
+            {art: "hund", antall: 5},
+            {art: "katt", antall: 8},
+            {art: "undulat", antall: 2},
+            {art: "ingen kjæledyr", antall: 12}
+        ];
+        function graderTilRadianer(grader) {
+            return Math.PI*grader/180;
+        }
+        var total = 0;
+        for(var kjeledyr of kjeledyrene){
+            total+= kjeledyr.antall;
+        }
+        var startvinkel = -90;
+        for(var kjeledyr of kjeledyrene){
+            var vinkel = kjeledyr.antall*360/total;
+            ctx.fillStyle = `hsl(${Math.random()*360}, 100%, 50%)`;
+            ctx.beginPath();
+            ctx.moveTo(150, 150);
+            ctx.arc(150, 150, 140, graderTilRadianer(startvinkel),graderTilRadianer(startvinkel+vinkel));
+            ctx.closePath();
+            ctx.fill();
+            startvinkel+=vinkel;
+        }
+
+    </script>
+
+</body>
+</html>

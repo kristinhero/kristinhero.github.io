@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brødskiver</title>
+    <style>
+        #chart {
+            display: flex;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            align-items: flex-end;
+        }
+        #chart > div {
+            background-color: aquamarine;
+            flex-grow: 1;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chart"></div>
+    <script>
+        var chart = document.getElementById("chart");
+        var brodskiver = [15, 20, 22, 3, 0, 5, 13, 17, 18, 29, 41];
+
+        function finnMaks(){
+            var maks = -Infinity;
+            for(var brodskive of brodskiver){
+                if(brodskive > maks){
+                    maks = brodskive;
+                }
+            }
+            return maks;
+        }
+        function tegnStolper(){
+            var maks = finnMaks();
+            for(var brodskive of brodskiver){
+                if(brodskive === 0){
+                    tekst = "";
+                } else {
+                    tekst = brodskive;
+                }
+                var prosent = brodskive/maks * 100;
+                chart.innerHTML += `<div style="height:${prosent}%">${tekst}</div>`;
+            }
+        }
+        tegnStolper();
+    </script>
+
+</body>
+</html>
