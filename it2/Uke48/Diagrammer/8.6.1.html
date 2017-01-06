@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Matkasting diagram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css"/>
     <style>
         #chart1 {
             width:400px;
@@ -30,9 +31,26 @@
     </style>
 </head>
 <body>
+    <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs" id="meny">
+            <li><a href="LeksevisningUke1.html">Hjem</a></li>
+        </ul>
+    </nav>
 
     <div id="chart1"></div>
     <div id="chart2"></div>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyCP1BDZpq3tAHg5MvHcm910RuInsg3PhII",
+            authDomain: "lekselevering.firebaseapp.com",
+            databaseURL: "https://lekselevering.firebaseio.com",
+            storageBucket: "lekselevering.appspot.com",
+            messagingSenderId: "80590446992"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script>
         var chart1 = document.getElementById("chart1");
         var chart2 = document.getElementById("chart2");
@@ -41,6 +59,15 @@
             chart1.innerHTML += `<div style='height:${kgUke*100}px'>${kgUke}</div>`; //stolpene ser fine ut når vi ganger med 100
             chart2.innerHTML += `<div style='width:${kgUke*100}px'>${kgUke}</div>`; //lengden må ikke overstige bredden eller høyden av containeren
         }
+        let database = firebase.database();
+        let uke1 = database.ref("Uke1");
+        let meny = document.getElementById("meny");
+
+        function visLinker(snapshot) {
+            let oppgave = snapshot.val();
+            meny.innerHTML += `<li><a href="${oppgave.link}">${oppgave.navn}</a></li>`;
+        }
+        uke1.on("child_added",visLinker);
     </script>
 
 </body>
