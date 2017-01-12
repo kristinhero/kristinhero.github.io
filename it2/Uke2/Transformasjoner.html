@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transformasjoner</title>
+    <style>
+        div {
+            background-color: aqua;
+            width: 100px;
+            height: 60px;
+            float: left;
+            margin: 5px;
+        }
+        #firkant {
+            background-color: aquamarine;
+            transition: 0.5s;
+            transform-origin: center top;
+        }
+        #firkant:hover {
+            transform: scale(2);
+            /* width: 150px; endrer plasseringen på det rundt */
+            /* transform: scaleX(1.5); */
+            /* transform: scale(1.3) rotate(20deg) skewX(20deg); */
+            transition: 1.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="firkant"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+</html>
