@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Strømforbruk</title>
-    <style></style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css"/>
 </head>
 <body>
 
@@ -20,58 +20,82 @@
     </style>
 </head>
 <body>
-
-<svg id="chart" width="300" height="200">
-    <defs>
-        <marker id="sirkel" markerWidth="6" markerHeight="6" refX="3" refY="3">
-            <circle cx="3" cy="3" r="2" fill="Steelblue"></circle></marker>
-    </defs>
-    <text font-family="arial" text-anchor="middle" fill="Black" font-size="14"
-    x="150" y="190">Måned</text>
-    <text font-family="arial" text-anchor="middle" fill="Black" font-size="14"
-          x="35" y="80" transform="rotate(270 35,80)">Strømforbruk i kWh</text>
-</svg>
-<script>
-    var chart = document.getElementById("chart");
-    var strommalinger = [
-        {mnd: "Januar", kwh: 650},
-        {mnd: "Februar", kwh: 400},
-        {mnd: "Mars", kwh: 350},
-        {mnd: "April", kwh: 300},
-        {mnd: "Mai", kwh: 200}
-    ];
-    for(var i=0; i<4; i++){
-        chart.innerHTML += `<line stroke="LightGray" x1="50" y1="${50*i}"
-            x2="250" y2="${50*i}"></line>`;
-    }
-    for(var i=0; i<5; i++){
-        chart.innerHTML += `<line stroke="LightGray" x1="${50 + i*50}" y1="0"
-            x2="${50 + i*50}" y2="150"></line>`;
-    }
-    strommalinger.forEach(function(element, indeks){
-        chart.innerHTML += `<text font-family="arial" text-anchor="middle"
-            fill="Dark-Gray" font-size="10" x="${50 + indeks*50}" y="170">${element.mnd}</text>`;
-    });
-    function finnMaks(){
-        var maks = -Infinity;
-        for(var strommaling of strommalinger){
-            if(strommaling.kwh>maks){
-                maks = strommaling.kwh;
-            }
+    <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs" id="meny">
+            <li><a href="https://kristinhero.github.io/it2/Uke1/LeksevisningUke1.html">Hjem</a></li>
+        </ul>
+    </nav>
+    <svg id="chart" width="300" height="200">
+        <defs>
+            <marker id="sirkel" markerWidth="6" markerHeight="6" refX="3" refY="3">
+                <circle cx="3" cy="3" r="2" fill="Steelblue"></circle></marker>
+        </defs>
+        <text font-family="arial" text-anchor="middle" fill="Black" font-size="14"
+        x="150" y="190">Måned</text>
+        <text font-family="arial" text-anchor="middle" fill="Black" font-size="14"
+              x="35" y="80" transform="rotate(270 35,80)">Strømforbruk i kWh</text>
+    </svg>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyCP1BDZpq3tAHg5MvHcm910RuInsg3PhII",
+            authDomain: "lekselevering.firebaseapp.com",
+            databaseURL: "https://lekselevering.firebaseio.com",
+            storageBucket: "lekselevering.appspot.com",
+            messagingSenderId: "80590446992"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        var chart = document.getElementById("chart");
+        var strommalinger = [
+            {mnd: "Januar", kwh: 650},
+            {mnd: "Februar", kwh: 400},
+            {mnd: "Mars", kwh: 350},
+            {mnd: "April", kwh: 300},
+            {mnd: "Mai", kwh: 200}
+        ];
+        for(var i=0; i<4; i++){
+            chart.innerHTML += `<line stroke="LightGray" x1="50" y1="${50*i}"
+                x2="250" y2="${50*i}"></line>`;
         }
-        return maks;
-    }
-    var punkter = "";
-    strommalinger.forEach(function (element, indeks) {
-        var maks = finnMaks();
-        var prosent = element.kwh/maks;
-        punkter += `${50 + indeks * 50},${200 - prosent*180} `;
-    });
-    chart.innerHTML += `<polyline points="${punkter}" marker-mid="url(#sirkel)"
-        stroke="Steelblue" stroke-width="2" fill="none"></polyline>`
+        for(var i=0; i<5; i++){
+            chart.innerHTML += `<line stroke="LightGray" x1="${50 + i*50}" y1="0"
+                x2="${50 + i*50}" y2="150"></line>`;
+        }
+        strommalinger.forEach(function(element, indeks){
+            chart.innerHTML += `<text font-family="arial" text-anchor="middle"
+                fill="Dark-Gray" font-size="10" x="${50 + indeks*50}" y="170">${element.mnd}</text>`;
+        });
+        function finnMaks(){
+            var maks = -Infinity;
+            for(var strommaling of strommalinger){
+                if(strommaling.kwh>maks){
+                    maks = strommaling.kwh;
+                }
+            }
+            return maks;
+        }
+            var punkter = "";
+            strommalinger.forEach(function (element, indeks) {
+            var maks = finnMaks();
+            var prosent = element.kwh/maks;
+            punkter += `${50 + indeks * 50},${200 - prosent*180} `;
+        });
+        chart.innerHTML += `<polyline points="${punkter}" marker-mid="url(#sirkel)"
+                            stroke="Steelblue" stroke-width="2" fill="none"></polyline>`
 
-</script>
+        let database = firebase.database();
+        let uke1 = database.ref("Uke1");
+        let meny = document.getElementById("meny");
 
+        function visLinker(snapshot) {
+            let oppgave = snapshot.val();
+            meny.innerHTML += `<li><a href="${oppgave.link}">${oppgave.navn}</a></li>`;
+        }
+        uke1.on("child_added",visLinker);
+    </script>
 </body>
 </html>
 
