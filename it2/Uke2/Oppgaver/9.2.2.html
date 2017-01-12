@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scale</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+        .container > * {
+            position: absolute;
+        }
+        .container > article {
+            background-color: cadetblue;
+            color: white;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: 1s;
+        }
+        .container > img {
+            transition: 1s;
+            width: 100%;
+            height: 100%;
+        }
+        .container:hover > article {
+            opacity: 1;
+        }
+        .container:hover > img {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <article>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Accusantium aliquam consequatur dolore dolores eligendi minima modi molestiae nulla quia velit!
+            Amet consequatur culpa distinctio incidunt ipsam quam quasi reprehenderit temporibus.</article>
+        <img src="skogstorkenebb.jpg" alt="">
+    </div>
+
+</body>
+</html>
