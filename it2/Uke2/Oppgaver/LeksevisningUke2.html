@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leksevisning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css"/>
+    <style>
+        body {
+            width: 60%;
+            margin: 0 auto;
+        }
+        #container {
+            width: 100%;
+            display: flex;
+        }
+        #container > a {
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs" id="meny">
+            <li><a href="LeksevisningUke2.html">Hjem</a></li>
+        </ul>
+    </nav>
+    <h1>Uke 2</h1>
+    <div id="container" class="button-group"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyCP1BDZpq3tAHg5MvHcm910RuInsg3PhII",
+            authDomain: "lekselevering.firebaseapp.com",
+            databaseURL: "https://lekselevering.firebaseio.com",
+            storageBucket: "lekselevering.appspot.com",
+            messagingSenderId: "80590446992"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        let database = firebase.database();
+        let uke2 = database.ref("Uke2");
+        let inpLink = document.getElementById("inpLink");
+        let inpNavn = document.getElementById("inpNavn");
+        let Form = document.getElementById("Form");
+        let container = document.getElementById("container");
+        let meny = document.getElementById("meny");
+
+        function visLinker(snapshot) {
+            let oppgave = snapshot.val();
+            container.innerHTML += `<a href="${oppgave.link}" class="button">${oppgave.navn}</a>`;
+            meny.innerHTML += `<li><a href="${oppgave.link}">${oppgave.navn}</a></li>`;
+        }
+        uke2.on("child_added",visLinker);
+
+    </script>
+</body>
+<!--Til filer som skal med:
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.4/foundation-flex.css"/>
+    <nav aria-label="You are here:" role="navigation">
+        <ul class="breadcrumbs" id="meny">
+            <li><a href="https://kristinhero.github.io/it2/Uke2/Oppgaver/LeksevisningUke2.html">Hjem</a></li>
+        </ul>
+    </nav>
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyCP1BDZpq3tAHg5MvHcm910RuInsg3PhII",
+            authDomain: "lekselevering.firebaseapp.com",
+            databaseURL: "https://lekselevering.firebaseio.com",
+            storageBucket: "lekselevering.appspot.com",
+            messagingSenderId: "80590446992"
+        };
+        firebase.initializeApp(config);
+    </script>
+    let database = firebase.database();
+    let uke2 = database.ref("Uke2");
+    let meny = document.getElementById("meny");
+
+    function visLinker(snapshot) {
+            let oppgave = snapshot.val();
+            meny.innerHTML += `<li><a href="${oppgave.link}">${oppgave.navn}</a></li>`;
+        }
+    uke2.on("child_added",visLinker);
+-->
+</html>
