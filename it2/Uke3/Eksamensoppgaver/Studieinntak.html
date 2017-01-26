@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snitt for universiteter og høgskoler</title>
+    <style>
+        input {
+            width: 100%;
+            border: 1px solid lightgray;
+        }
+        select {
+            width: 100%;
+        }
+        #frm {
+            width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        #frm > * {
+            display: block;
+            margin-bottom: 5px;
+            height: 40px;
+            font-size: 18px;
+        }
+        button {
+            margin: 50px auto 5px auto;
+            background-color: aliceblue;
+            border: solid 1px lightgray;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        label {
+            font-family: BlinkMacSystemFont;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="frm">
+        <input id="inpSnitt" type="number" required placeholder="Ditt karaktersnitt fra vgs">
+        <input id="inpPoeng" type="number" required placeholder="Dine tilleggspoeng">
+        <label for="grense">Utdanningen du vil søke</label>
+        <select name="grense" id="grense" required>
+            <option value="50">Lektorutdanning i historie</option>
+            <option value="48">Lektorutdanning i språkfag/engelsk</option>
+        </select>
+        <button type="submit">Send inn</button>
+    </form>
+    <div id="info"></div>
+
+    <script>
+        let frm = document.getElementById("frm");
+        let inpSnitt = document.getElementById("inpSnitt");
+        let inpPoeng = document.getElementById("inpPoeng");
+        let grense = document.getElementById("grense");
+        let info = document.getElementById("info");
+
+        frm.onsubmit = function (evt) {
+            evt.preventDefault();
+            let karakterer = Number(inpSnitt.value);
+            let poeng = Number(inpPoeng.value);
+            let snitt = karakterer * 10 + poeng;
+            let krav = grense.value;
+            if(snitt >= krav){
+                info.innerHTML = "Det er sannsynlig at du kommer inn på skolen."
+            } else {
+                info.innerHTML = "Du kommer dessverre ikke inn på skolen. "
+            }
+        }
+    </script>
+
+</body>
+</html>
