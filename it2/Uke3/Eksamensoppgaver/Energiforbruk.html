@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Beregning av energiforbruk</title>
+</head>
+<body>
+
+    <form id="frm">
+        <input id="inpVekt" type="number" required placeholder="Din vekt">
+        <select id="inpAktivitet" required>
+            <option value="1.2">Jeg sitter</option>
+            <option value="1.4">Jeg står</option>
+        </select>
+        <button type="submit">Regn ut energiforbruk</button>
+    </form>
+    <div id="visBMR"></div>
+    <div id="visE"></div>
+
+    <script>
+        let inpVekt = document.getElementById("inpVekt");
+        let visBMR = document.getElementById("visBMR");
+        let inpAktivitet = document.getElementById("inpAktivitet");
+        let visE = document.getElementById("visE");
+        let frm = document.getElementById("frm");
+
+        inpVekt.oninput = function (evt) {
+            evt.preventDefault();
+            let BMR = 35.27 + (0.558 * inpVekt.value);
+            visBMR.innerHTML = "Din BMR er " + BMR.toFixed(2);
+        };
+        frm.onsubmit = function (evt) {
+            evt.preventDefault();
+            let BMR = 35.27 + (0.558 * inpVekt.value);
+            let kcal = BMR * inpAktivitet.value;
+            visE.innerHTML = "Ditt energiforbruk er " + kcal.toFixed(2) + " kcal";
+        }
+
+    </script>
+
+</body>
+</html>
