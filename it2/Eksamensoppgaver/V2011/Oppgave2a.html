@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grove trær</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 600px;
+            background-color: lightcyan;
+            margin: auto;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        #skjema > * {
+            display: block;
+            width: 100%;
+            height: 30px;
+            /*margin: 0 auto;*/
+            margin-bottom: 5px;
+        }
+        #skjema > button {
+            margin: 10px auto 0 auto;
+            width: 60px;
+            background-color: white;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+        }
+        #info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>Beregn økning i antall grove trær</h1>
+        <form id="skjema">
+            <label for="selSort">Velg tresort</label>
+            <select id="selSort">
+                <option value="furu">Furu</option>
+                <option value="gran">Gran</option>
+                <option value="lauvtre">Lauvtre</option>
+            </select>
+            <label for="selAar1">Velg år 1</label>
+            <select id="selAar1">
+                <option value="1915">1915</option>
+                <option value="1950">1950</option>
+                <option value="1970">1970</option>
+                <option value="1990">1990</option>
+                <option value="1992">1992</option>
+                <option value="2000">2000</option>
+            </select>
+            <input id="inpAar1" type="number" required min="4" max="117" placeholder="Antall grove trær i millioner">
+            <label for="selAar2">Velg år 2</label>
+            <select id="selAar2">
+                <option value="1915">1915</option>
+                <option value="1950">1950</option>
+                <option value="1970">1970</option>
+                <option value="1990">1990</option>
+                <option value="1992">1992</option>
+                <option value="2000">2000</option>
+            </select>
+            <input id="inpAar2" type="number" required min="4" max="117" placeholder="Antall grove trær i millioner">
+            <button type="submit">Regn ut</button>
+        </form>
+        <div id="info"></div>
+    </div>
+    <script>
+        let skjema = document.getElementById("skjema");
+        let info = document.getElementById("info");
+        let selSort = document.getElementById("selSort");
+        let selAar1 = document.getElementById("selAar1");
+        let selAar2 = document.getElementById("selAar2");
+        let inpAar1 = document.getElementById("inpAar1");
+        let inpAar2 = document.getElementById("inpAar2");
+
+        function regnUt(evt) {
+            evt.preventDefault();
+            let aar1 = selAar1.value;
+            let aar2 = selAar2.value;
+            let tresort = selSort.value;
+            let antTraer1 = Number(inpAar1.value);
+            let antTraer2 = Number(inpAar2.value);
+            let diff = antTraer2 - antTraer1;
+            let prosent = (diff/antTraer1)*100;
+            info.innerHTML = `Antall grove ${tresort}trær fra ${aar1} til ${aar2}
+                              har økt med ${diff} millioner. <br>
+                              Det tilsvarer en økning på ${prosent.toFixed(1)}%.`;
+        }
+
+        skjema.addEventListener("submit",regnUt);
+
+    </script>
+
+</body>
+</html>
