@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suksesjonsanimasjon</title>
+    <style>
+        #container {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-image: url(filer/bre.jpg);
+            background-size: 600px 400px;
+        }
+        #container > img {
+            width: 600px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+        #container > #fjellkrekling {
+            width: 620px;
+            height: 420px;
+            top: -10px;
+            left: -10px;
+        }
+        #container > button {
+            position: absolute;
+            top: 5px;
+            opacity: 0;
+            transition: 500ms;
+        }
+        #btnInfo {
+            left: 5px;
+        }
+        #btnStart {
+            right: 5px;
+        }
+        #container > #info {
+            display: none;
+            width: 100%;
+            height: 100%;
+            transition: 1s;
+            color:white;
+            background-color: black;
+            position: relative;
+            padding: 10px;
+        }
+        #info > button {
+            position: absolute;
+            right: 25px;
+        }
+        #info > h1 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="btnInfo">Vis informasjon</button>
+        <button id="btnStart">Spill av igjen</button>
+        <div id="info">
+            <button id="btnLukk">Lukk</button>
+            <h1>Suksesjon:</h1>
+            <p>Suksesjon er følge av plante- og dyrearter på en lokalitet gjennom tid.
+                Et plantesamfunn forandres over tid ved at nye arter konkurrerer ut tidligere arter.
+                Denne endringen kan gå raskt eller langsomt, alt etter planteartenes levetid.
+                På nydannet mark (f.eks. etter tilbaketrekking av en isbre) finner en primærsuksesjon sted.
+                Etablerte plantesamfunn kan gjennomgå sykliske endringer med sekundærsuksesjoner.
+                I nordlige barskoger brenner skogen under naturlige forhold med jevne mellomrom.
+                På brannflatene etablerer næringskrevende urter som geitrams seg, og etter hvert spirer ulike løvtrearter opp.
+                Senere kommer bartrærne inn, og etter hundre til to hundre år kan det igjen være ren barskog på lokaliteten.
+                Barskogen utgjør her et klimakssamfunn. (Kilde: SNL)</p>
+            </div>
+    </div>
+
+    <script>
+        let container = document.getElementById("container");
+        let btnInfo = document.getElementById("btnInfo");
+        let btnStart = document.getElementById("btnStart");
+        let info = document.getElementById("info");
+        let btnLukk = document.getElementById("btnLukk");
+
+        let keyframes = [{backgroundImage: "url(filer/bre.jpg)"},
+            {backgroundImage: "url(filer/bre.jpg)"},
+            {backgroundImage: "url(filer/steinur.jpg)"},
+            {backgroundImage: "url(filer/steinur.jpg)"},
+            {backgroundImage: "url(filer/reinlav.jpg)"},
+            {backgroundImage: "url(filer/reinlav.jpg)"},
+            {backgroundImage: "url(filer/issoleie.jpg)"},
+            {backgroundImage: "url(filer/issoleie.jpg)"},
+            {backgroundImage: "url(filer/raudsildre.jpg)"},
+            {backgroundImage: "url(filer/raudsildre.jpg)"},
+            {backgroundImage: "url(filer/greplyng.jpg)"},
+            {backgroundImage: "url(filer/greplyng.jpg)"},
+            {backgroundImage: "url(filer/fjellkrekling.jpg)"},
+            {backgroundImage: "url(filer/fjellkrekling.jpg)"},
+            {backgroundImage: "url(filer/dvergbjerk.jpg)"},
+            {backgroundImage: "url(filer/dvergbjerk.jpg)"},
+            {backgroundImage: "url(filer/bre.jpg)"}];
+
+        let settings = {duration: 12000, fill: "forwards"};
+        let animerBakgrunn = container.animate(keyframes, settings);
+
+        let knappKeyframes = [{opacity:0}, {opacity:1}];
+        let knappSettings = {duration: 100, delay: 12000, fill: "forwards"};
+        let animerKnappInfo = btnInfo.animate(knappKeyframes,knappSettings);
+        let animerKnappStart = btnStart.animate(knappKeyframes,knappSettings);
+
+        function visInfo() {
+            info.style.display = "block";
+        }
+        function skjulInfo(){
+            info.style.display = "none";
+        }
+        function startAnimasjon() {
+            animerBakgrunn.play();
+            btnInfo.style.opacity = 0;
+            btnStart.style.opacity = 0;
+            animerKnappInfo.play();
+            animerKnappStart.play();
+        }
+        startAnimasjon();
+        btnStart.addEventListener("click",startAnimasjon);
+        btnInfo.addEventListener("click", visInfo);
+        btnLukk.addEventListener("click", skjulInfo)
+    </script>
+
+</body>
+</html>
