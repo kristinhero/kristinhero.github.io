@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 2</title>
+    <link rel="stylesheet" href="foundation-flex.css">
+    <style>
+        body {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="spraaktest"></form>
+    <div id="info"></div>
+
+    <script>
+        /**
+         * Randomize array element order in-place.
+         * Using Durstenfeld shuffle algorithm.
+         */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                let temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
+
+        let spraaktest = document.getElementById("spraaktest");
+        let info = document.getElementById("info");
+        let poeng = 0;
+        let makspoeng = 0;
+
+        let amerikansk = [{
+            id: "spm1",
+            spm: "Hva betyr ordet Where?",
+            alternativer: ["Vi er", "Var", "Hvorfor"],
+            svar: ["Hvor"],
+            lyd: 0,
+            bilde: 0
+        },{
+            id: "spm2",
+            spm: "Hvilke(t) ord kan legges til her? How are...",
+            alternativer: ["John doing?", "the house", "the wife"],
+            svar: ["you","things"],
+            lyd: 0,
+            bilde: 0
+        },{
+            id: "spm3",
+            spm: "Spill av lyden 'Oversetting.mp3' og velg riktig oversettelse",
+            alternativer: ["Hei, mitt navn er Tom", "Jeg er tom", "Når kommer Tom?"],
+            svar: ["Kjenner du Tom?"],
+            lyd: "vedlegg/Oversetting.mp3",
+            bilde: 0
+        }];
+
+
+        function lagTest(spraak) {
+            let spraaknavn = "";
+            if(spraak === amerikansk){
+                spraaknavn = "amerikansk";
+            }
+            spraaktest.setAttribute("navn",spraaknavn);
+            spraaktest.innerHTML = "";
+            for(let sporsmaal of spraak){
+                spraaktest.innerHTML += `<div>${sporsmaal.spm}</div>`;
+                if(sporsmaal.lyd){
+                    spraaktest.innerHTML+= `<audio controls>
+                            <source src="${sporsmaal.lyd}">
+                    </audio><br>`;
+                }
+
+                let alleAlternativer = sporsmaal.alternativer;
+                for(let svar of sporsmaal.svar){
+                    alleAlternativer.push(svar);
+                    makspoeng++;
+                }
+                shuffleArray(alleAlternativer);
+                for(let alternativ of alleAlternativer){
+                    if(sporsmaal.svar.length >1){
+                        spraaktest.innerHTML += `<label>
+                            <input type="checkbox" name="${sporsmaal.id}" value="${alternativ}">
+                            ${alternativ}</label><br>`;
+                    } else {
+                        spraaktest.innerHTML += `<label>
+                            <input type="radio" name="${sporsmaal.id}" value="${alternativ}">
+                            ${alternativ}</label><br>`;
+                    }
+
+                }
+            }
+            spraaktest.innerHTML += `<button type="submit">Svar</button>`;
+        }
+        function sjekkSvar(evt) {
+            evt.preventDefault();
+            let spraaknavn = spraaktest.getAttribute("navn");
+            let spraak = "";
+            if(spraaknavn === "amerikansk"){
+                spraak = amerikansk;
+            }
+            let riktig = 0;
+            poeng = 0;
+            for(let sporsmaal of spraak){
+                let brukervalgene = document.querySelectorAll("input[name=" + sporsmaal.id +"]:checked");
+                for(let valg of brukervalgene){
+                    for(let svar of sporsmaal.svar) {
+                        if (svar === valg.value) {
+                            riktig++;
+                        }
+                    }
+                    if(riktig){
+                        poeng++;
+                    } else {
+                        poeng--;
+                    }
+                    valg.checked = false;
+                }
+            }
+            if(poeng === makspoeng){
+                info.innerHTML = "Dette språket kan du godt!";
+            } else if (poeng <= 0){
+                info.innerHTML = "Dette gikk ikke så bra, " +
+                    "men det er håp for alle som vil lære et nytt språk!"
+            } else {
+                info.innerHTML = "Vi tilbyr språkkurs i New York!";
+            }
+        }
+
+        spraaktest.onsubmit = sjekkSvar;
+        lagTest(amerikansk);
+
+    </script>
+
+</body>
+</html>
