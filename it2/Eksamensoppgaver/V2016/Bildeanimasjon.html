@@ -111,7 +111,9 @@
         }
         
         function scaleStP(id) {
-            avsluttQuiz();
+            if(quiz.style.visibility === "visible"){
+                avsluttQuiz();
+            }
             info.innerHTML = "";
             let StP = document.getElementById("StP");
             StP.animate([
