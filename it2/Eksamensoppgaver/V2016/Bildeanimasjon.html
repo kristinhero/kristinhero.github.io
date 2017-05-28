@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave 1</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        body {
+            height: 100vh;
+            max-width: 750px;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+        #container {
+            max-width: 750px;
+            max-height: 426px;
+            position: relative;
+            flex: 1;
+        }
+        #flexbox {
+            width: 100%;
+            max-height: 250px;
+            background-color: blue;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #flexbox > img {
+            flex: 1;
+            max-height: 250px;
+            width: auto;
+        }
+        #videoDiv {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+        }
+        #quiz {
+            max-width: 750px;
+            position: relative;
+            flex: 1;
+            visibility: hidden;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="flexbox"></div>
+        <div id="videoDiv">
+            <video src="vedlegg/RomaVideo.mp4" id="romaVideo" controls></video>
+        </div>
+    </div>
+    <div id="quiz">
+        <h1>Gjett hvilken bygning som er på bildet fra New York!</h1>
+        <form id="quizSkjema">
+            <input id="inpSvar" type="text" placeholder="Ditt svar" required autocomplete="off">
+            <button type="submit">Svar</button>
+        </form>
+        <div id="info"></div>
+    </div>
+
+    <script>
+
+        let flexbox = document.getElementById("flexbox");
+        let videoDiv = document.getElementById("videoDiv");
+        let romaVideo = document.getElementById("romaVideo");
+        let quiz = document.getElementById("quiz");
+        let quizSkjema = document.getElementById("quizSkjema");
+        let inpSvar = document.getElementById("inpSvar");
+        let info = document.getElementById("info");
+
+        let bilder = new Map;
+
+        bilder.set("StP",{
+            id: "StP",
+            navn: "St. Petersburg",
+            src: "StPetersburg1.jpg",
+            funksjon: "scaleStP"
+        });
+        bilder.set("Roma",{
+            id: "Roma",
+            navn: "Roma",
+            src: "Roma.jpg",
+            funksjon: "spillRoma"
+        });
+        bilder.set("NY",{
+            id: "NY",
+            navn: "New York",
+            src: "wtc1.jpg",
+            funksjon: "kjoerQuiz"
+        });
+
+        for(let [id,bilde] of bilder){
+            flexbox.innerHTML += `<img id="${id}" src="vedlegg/${bilde.src}"
+                                       onclick="${bilde.funksjon}()">`;
+        }
+        
+        function scaleStP(id) {
+            avsluttQuiz();
+            info.innerHTML = "";
+            let StP = document.getElementById("StP");
+            StP.animate([
+                {transform: "scale(1) translate(0px,0px)"},
+                {transform: "scale(2) translate(50px,50px)"},
+                {transform: "scale(2) translate(50px,50px)"},
+                {transform: "scale(1) translate(0,0)"}
+            ],{
+                duration: 4000,
+                easing: "ease-in-out"
+            });
+        }
+
+        let keyframes = [
+            {visibility: "hidden", opacity: 0},
+            {visibility: "visible", opacity: 1}
+        ];
+
+        function spillRoma () {
+            avsluttQuiz();
+            videoDiv.animate(keyframes,{
+                duration: 2000,
+                fill: "forwards"});
+            romaVideo.play();
+            romaVideo.onended = function () {
+                videoDiv.animate(keyframes,{
+                    duration: 1000,
+                    direction: "reverse",
+                    fill: "forwards"
+                });
+            }
+        }
+        
+        function kjoerQuiz () {
+            quiz.animate(keyframes, {
+                duration: 1000,
+                fill: "forwards"
+            });
+        }
+
+        function avsluttQuiz() {
+            info.innerHTML = "";
+            quiz.animate(keyframes, {
+                duration: 1000,
+                direction: "reverse",
+                fill: "forwards"
+            });
+        }
+
+        quizSkjema.onsubmit = function (evt) {
+            evt.preventDefault();
+            if(inpSvar.value.toLowerCase() === "world trade center"){
+                info.innerHTML = "Du vet allerede noe om New York - hva med å lære mer?"
+            } else {
+                info.innerHTML = "Det var ikke rett - kanskje på tide med en New York-tur?"
+            }
+            inpSvar.value = "";
+        };
+
+    </script>
+
+</body>
+</html>
